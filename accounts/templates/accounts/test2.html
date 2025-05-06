@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html >
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <title>حاسبة السعرات الحرارية</title> -->
+    <!--=============== FAVICON ===============-->
+    <!--=============== FAVICON ===============-->
+       <link
+       rel="shortcut icon"
+       href="{% static 'assets/img/logo-2.svg' %}"
+       type="image/x-icon"
+     />
+
+    <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> -->
+    {% comment %} <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" /> {% endcomment %}
+    {% comment %} <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> {% endcomment %}
+    <style>
+      :root {
+        --first-color: hsl(35, 100%, 50%);
+        /* برتقالي */
+        --first-color-alt: hsl(35, 95%, 29%);
+        /* برتقالي أغمق */
+        --first-color-light: hsl(38, 100%, 78%);
+        --title-color: hsl(231, 45%, 20%);
+        /* أزرق داكن */
+        --second-color: hsl(195, 75%, 52%);
+        --text-color: hsl(231, 25%, 40%);
+        /* أزرق أفتح للنص */
+        --white-color: hsl(0, 0%, 100%);
+        /* أبيض */
+        --container-color: hsl(0deg 0% 0% / 53%);
+        --dark-color: hsl(231, 50%, 15%);
+        /* أزرق داكن جدًا */
+        --body-color: hsl(231, 40%, 10%);
+        /* خلفية غامقة */
+        --body-white-color: hsl(0, 0%, 100%);
+        --shadow-card: 0 -8px 24px hsla(0, 0%, 0%, .3);
+        --shadow-button: 0 -4px 8px hsla(0, 0%, 0%, .3);
+        --shadow-text: 0 2px 4px hsl(35, 95%, 29%);
+      }
+    
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Tajawal", sans-serif;
+      }
+    
+      body {
+        background-color: var(--body-color);
+        color: var(--white-color);
+        line-height: 1.6;
+      }
+    
+      {% comment %} .containerii {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: linear-gradient(rgb(0 0 0 / 20%), rgba(0, 0, 0, 0.3)), url(../img/black/black1.jpg) no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+        box-shadow: var(--shadow-card);
+        backdrop-filter: blur(8px);
+        transition: 0.4s ease;
+      } {% endcomment %}
+    
+      .containerii:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px hsla(0, 0%, 0%, 0.5);
+      }
+    
+      h1 {
+        color: var(--first-color);
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-weight: 800;
+        text-shadow: var(--shadow-text);
+        font-size: 2rem;
+      }
+    
+      .tabs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid var(--first-color-light);
+      }
+    
+      .tab {
+        padding: 0.75rem 1.5rem;
+        cursor: pointer;
+        border-bottom: 3px solid transparent;
+        color: var(--white-color);
+        transition: all 0.3s;
+      }
+    
+      .tab.active {
+        border-bottom: 3px solid var(--first-color);
+        color: var(--first-color);
+        font-weight: bold;
+      }
+    
+      .calculator-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+    
+      .form-group {
+        margin-bottom: 1rem;
+      }
+    
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: var(--white-color);
+      }
+    
+      input,
+      select {
+        width: 100%;
+        padding: 0.75rem;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        background-color: var(--dark-color);
+        color: var(--white-color);
+        transition: 0.3s;
+      }
+    
+      input:focus,
+      select:focus {
+        outline: none;
+        background-color: var(--first-color-light);
+        color: var(--title-color);
+      }
+    
+      .activity-level {
+        grid-column: span 2;
+      }
+    
+      .activity-options {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+    
+      .activity-option {
+        padding: 1rem;
+        border: 1px solid var(--first-color-light);
+        border-radius: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        color: var(--white-color);
+        background: #000000cc;
+      }
+    
+      .activity-option:hover,
+      .activity-option.selected {
+        border-color: var(--first-color);
+        background-color: hsla(35, 100%, 50%, 0.15);
+      }
+    
+      .buttons {
+        grid-column: span 2;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+    
+      button {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+      }
+    
+      .calculate-btn {
+        background-color: var(--first-color);
+        color: var(--white-color);
+        box-shadow: var(--shadow-button);
+      }
+    
+      .calculate-btn:hover {
+        background-color: var(--first-color-alt);
+        transform: scale(1.05);
+      }
+    
+      .clear-btn {
+        background-color: transparent;
+        border: 1px solid var(--first-color-light);
+        color: var(--white-color);
+      }
+    
+      .clear-btn:hover {
+        background-color: var(--first-color-light);
+        color: var(--title-color);
+      }
+    
+      .results {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        background-color: var(--dark-color);
+        border-radius: 12px;
+        display: none;
+        box-shadow: var(--shadow-card);
+      }
+    
+      .results h2 {
+        color: var(--first-color);
+        margin-bottom: 1rem;
+        text-align: center;
+        font-size: 1.5rem;
+      }
+    
+      .result-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--first-color-light);
+      }
+    
+      .result-item:last-child {
+        border-bottom: none;
+      }
+    
+      .result-label {
+        font-weight: 500;
+        color: var(--white-color);
+      }
+    
+      .result-value {
+        font-weight: bold;
+        color: var(--first-color);
+      }
+    
+      @media (max-width: 768px) {
+        .calculator-form {
+          grid-template-columns: 1fr;
+        }
+    
+        .activity-level,
+        .buttons {
+          grid-column: span 1;
+        }
+      }
+    </style>
+    
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}" />
+    <title>Omar</title>
+  </head>
+
+  <body>
+    <!--==================== HEADER ====================-->
+   <header class="header" id="header">
+    <nav class="nav container">
+        <a href="{% url 'index' %}" class="nav__logo"><img style="width: 60%;" src="{% static 'assets/img/logo-2.svg' %}" alt="" class="logohat"></a>
+        <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+                <li>
+                    <a href="{% url 'index' %}" class="nav__link" data-lang="navhome">HOME</a>
+                </li>
+
+                <li>
+                    <a href="{% url 'about' %}" class="nav__link" data-lang="navabout">ABOUT</a>
+                </li>
+
+                <li>
+                    <a href="{% url 'index' %}" class="nav__link"  data-lang="navtrans">TRANSFORMATION</a>
+                </li>
+
+                <li>
+                    <a href="{% url 'index' %}" class="nav__link"  data-lang="navtestimonial">
+                        TESTIMONIAL
+                    </a>
+                </li>
+
+                {% comment %} <li>
+                    <a href="{% url 'calc' %}" class="nav__link"  data-lang="navcalc">CALCULATOR</a>
+                </li> {% endcomment %}
+            </ul>
+            <div class="nav__colse" id="nav-close">
+                <i class="ri-close-large-line"></i>
+            </div>
+        </div>
+        <button type="button" id="openCurrencyMenu" class="btn--rounded-gray">
+            <span class="flag-icon" id="currentFlag">
+                <img src="{% static 'assets/img/usd.webp' %}" width="20" />
+            </span>
+            <span class="mx-1.5">|</span>
+            <span id="currentCurrency">USD</span>
+        </button>
+        
+        <div class="language-currency-menu popup" id="currencyMenu">
+            <div class="menu-header">
+                <span style="color: #ff9500;">اختر اللغة والعملة</span>
+                <span class="close-btn" id="closeMenu">&times;</span>
+            </div>
+        
+            <div class="menu-options">
+                <div class="menu-item" data-lang="ar" data-currency="EGP" data-flag="eg.png">
+                    <img src="{% static 'assets/img/eg.png' %}" alt="العلم المصري" class="flag-icon">
+                    <span>العربية - الجنيه المصري (EGP)</span>
+                </div>
+                <div class="menu-item" data-lang="ar" data-currency="SAR" data-flag="saudi.webp">
+                    <img src="{% static 'assets/img/saudi.webp' %}" alt="العلم السعودي" class="flag-icon">
+                    <span>العربية - الريال السعودي (SAR)</span>
+                </div>
+                <div class="menu-item" data-lang="ar" data-currency="AED" data-flag="unitearab.webp">
+                    <img src="{% static 'assets/img/unitearab.webp' %}" alt="العلم الإماراتي" class="flag-icon">
+                    <span>العربية - الدرهم الإماراتي (AED)</span>
+                </div>
+                <div class="menu-item" data-lang="en" data-currency="USD" data-flag="usd.webp">
+                    <img src="{% static 'assets/img/usd.webp' %}" alt="العلم الأمريكي" class="flag-icon">
+                    <span>English - US Dollar (USD)</span>
+                </div>
+            </div>
+        </div>
+        <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-apps-2-fill"></i>
+        </div>
+    </nav>
+    </header>
+
+
+    <div class="containerii section">
+  <h1 data-lang="calorie">Calorie Calculator</h1>
+
+  <div class="calculator-form">
+    <div class="form-group">
+      <label for="age" data-lang="age">Age</label>
+      <input type="number" id="age" min="15" max="80" value="25" />
+    </div>
+
+    <div class="form-group">
+      <label for="gender" data-lang="gender">Gender</label>
+      <select id="gender">
+        <option value="male" data-lang="male">Male</option>
+        <option value="female" data-lang="female">Female</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="height" data-lang="height">Height (cm)</label>
+      <input type="number" id="height" min="100" max="250" value="180" />
+    </div>
+
+    <div class="form-group">
+      <label for="weight" data-lang="weight">Weight (kg)</label>
+      <input type="number" id="weight" min="30" max="200" value="65" />
+    </div>
+
+    <div class="form-group activity-level">
+      <label data-lang="activity">Activity Level</label>
+      <div class="activity-options">
+        <div class="activity-option" data-level="1.2">
+          <h4 data-lang="sedentary">Sedentary</h4>
+          <p data-lang="sed">Little or no exercise</p>
+        </div>
+        <div class="activity-option" data-level="1.375">
+          <h4 data-lang="light">Light</h4>
+          <p data-lang="light2">Light exercise 1–3 days/week</p>
+        </div>
+        <div class="activity-option selected" data-level="1.55">
+          <h4 data-lang="mod">Moderate</h4>
+          <p data-lang="mod2">Moderate exercise 3–5 days/week</p>
+        </div>
+        <div class="activity-option" data-level="1.725">
+          <h4 data-lang="active">Active</h4>
+          <p data-lang="active2">Hard exercise 6–7 days/week</p>
+        </div>
+        <div class="activity-option" data-level="1.9">
+          <h4 data-lang="very">Very Active</h4>
+          <p data-lang="very2">Hard daily exercise or physical job</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button class="calculate-btn" data-lang="cals">Calculate</button>
+      <button class="clear-btn" data-lang="clear">Clear</button>
+    </div>
+  </div>
+
+  <div class="results">
+    <h2 data-lang="result">Results</h2>
+    <div class="result-item">
+      <span class="result-label" data-lang="amin">Maintain weight:</span>
+      <span class="result-value" id="maintain">0</span> kcal/day
+    </div>
+    <div class="result-item">
+      <span class="result-label" data-lang="mid">Mild weight loss (0.25 kg/week):</span>
+      <span class="result-value" id="mild-loss">0</span> kcal/day
+    </div>
+    <div class="result-item">
+      <span class="result-label" data-lang="weightloss">Weight loss (0.5 kg/week):</span>
+      <span class="result-value" id="weight-loss">0</span> kcal/day
+    </div>
+    <div class="result-item">
+      <span class="result-label" data-lang="extreme">Extreme weight loss (1 kg/week):</span>
+      <span class="result-value" id="extreme-loss">0</span> kcal/day
+    </div>
+  </div>
+</div>
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const tabs = document.querySelectorAll(".tab");
+        const activityOptions = document.querySelectorAll(".activity-option");
+        const calculateBtn = document.querySelector(".calculate-btn");
+        const clearBtn = document.querySelector(".clear-btn");
+        const resultsSection = document.querySelector(".results");
+
+        // Tab switching
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            tabs.forEach((t) => t.classList.remove("active"));
+            tab.classList.add("active");
+            // Here you would add logic to switch between metric and imperial units
+          });
+        });
+
+        // Activity level selection
+        activityOptions.forEach((option) => {
+          option.addEventListener("click", () => {
+            activityOptions.forEach((opt) => opt.classList.remove("selected"));
+            option.classList.add("selected");
+          });
+        });
+
+        // Calculate button
+        calculateBtn.addEventListener("click", calculateCalories);
+
+        // Clear button
+        clearBtn.addEventListener("click", () => {
+          document.getElementById("age").value = 25;
+          document.getElementById("gender").value = "male";
+          document.getElementById("height").value = 180;
+          document.getElementById("weight").value = 65;
+          activityOptions.forEach((opt) => opt.classList.remove("selected"));
+          document
+            .querySelector('[data-level="1.55"]')
+            .classList.add("selected");
+          resultsSection.style.display = "none";
+        });
+
+        function calculateCalories() {
+          const age = parseInt(document.getElementById("age").value);
+          const gender = document.getElementById("gender").value;
+          const height = parseInt(document.getElementById("height").value);
+          const weight = parseInt(document.getElementById("weight").value);
+          const activityLevel = parseFloat(
+            document.querySelector(".activity-option.selected").dataset.level
+          );
+
+          // Mifflin-St Jeor Equation
+          let bmr;
+          if (gender === "male") {
+            bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+          } else {
+            bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+          }
+
+          const tdee = Math.round(bmr * activityLevel);
+
+          document.getElementById("maintain").textContent = tdee;
+          document.getElementById("mild-loss").textContent = Math.round(
+            tdee * 0.9
+          );
+          document.getElementById("weight-loss").textContent = Math.round(
+            tdee * 0.79
+          );
+          document.getElementById("extreme-loss").textContent = Math.round(
+            tdee * 0.59
+          );
+
+          resultsSection.style.display = "block";
+        }
+      });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const openBtn = document.getElementById('openCurrencyMenu');
+          const closeBtn = document.getElementById('closeMenu');
+          const menu = document.getElementById('currencyMenu');
+          const menuItems = document.querySelectorAll('.menu-item');
+          const currentCurrencyEl = document.getElementById('currentCurrency');
+          const currentFlag = document.getElementById('currentFlag');
+          const priceEls = document.querySelectorAll('.menu__preci');
+          const workoutNumberEl = document.getElementById('workout-number');
+  
+          const basePrices = {
+              package1: 55,
+              package2: 97,
+              package3: 39
+          };
+  
+          const exchangeRates = {
+              USD: 1,
+              EGP: 30.9,
+              SAR: 3.75,
+              AED: 3.67
+          };
+  
+          const paymentLinks = {
+              EGP: {
+                  package1: "https://app.fawaterk.com/paymentRequest/show/18645",
+                  package2: "https://app.fawaterk.com/paymentRequest/show/18646",
+                  package3: "https://app.fawaterk.com/paymentRequest/show/18647"
+              },
+              SAR: {
+                  package1: "https://app.fawaterk.com/paymentRequest/show/18651",
+                  package2: "https://app.fawaterk.com/paymentRequest/show/18652",
+                  package3: "https://app.fawaterk.com/paymentRequest/show/18653"
+              },
+              AED: {
+                  package1: "https://staging.fawaterk.com/paymentRequest/show/308",
+                  package2: "https://staging.fawaterk.com/paymentRequest/show/307",
+                  package3: "https://staging.fawaterk.com/paymentRequest/show/306"
+              },
+              USD: {
+                  package1: "https://app.fawaterk.com/paymentRequest/show/18648",
+                  package2: "https://app.fawaterk.com/paymentRequest/show/18649",
+                  package3: "https://app.fawaterk.com/paymentRequest/show/18650"
+              }
+          };
+  
+          let selectedCurrency = 'USD';
+  
+          function setCurrencyBasedOnLocation() {
+              fetch('/location/')
+                  .then(response => response.json())
+                  .then(data => {
+                      const country = data.country;
+                      let currency = 'USD';
+                      let lang = 'en';
+  
+                      if (country === 'EG') {
+                          currency = 'EGP';
+                          lang = 'ar';
+                      } else if (country === 'SA') {
+                          currency = 'SAR';
+                          lang = 'ar';
+                      } else if (country === 'AE') {
+                          currency = 'AED';
+                          lang = 'ar';
+                      }
+  
+                      selectedCurrency = currency;
+                      updateCurrencyUI(currency);
+                      changeLanguage(lang); // ✅ استدعاء الصحيح
+                  });
+          }
+  
+          function updateCurrencyUI(currency) {
+              const flagMap = {
+                  EGP: 'eg.png',
+                  SAR: 'saudi.webp',
+                  AED: 'unitearab.webp',
+                  USD: 'usd.webp'
+              };
+  
+              currentCurrencyEl.textContent = currency;
+              currentFlag.innerHTML = `<img src="/static/assets/img/${flagMap[currency]}" width="20">`;
+  
+              priceEls.forEach((el, index) => {
+                  const packageName = `package${index + 1}`;
+                  const usdPrice = basePrices[packageName];
+                  const converted = (usdPrice * exchangeRates[currency]).toFixed(2);
+                  el.textContent = currency === 'USD' ? `$${usdPrice}` : `${converted} ${currency}`;
+              });
+  
+              const buttons = document.querySelectorAll('.btn-day');
+              buttons.forEach((button, index) => {
+                  const packageName = `package${index + 1}`;
+                  button.setAttribute('data-link', paymentLinks[currency][packageName]);
+              });
+  
+              buttons[0]?.click();
+          }
+  
+          openBtn.addEventListener('click', () => {
+              menu.classList.add('show');
+          });
+  
+          closeBtn.addEventListener('click', () => {
+              menu.classList.remove('show');
+          });
+  
+          menuItems.forEach(item => {
+              item.addEventListener('click', () => {
+                  const currency = item.getAttribute('data-currency');
+                  const flag = item.getAttribute('data-flag');
+                  const language = item.getAttribute('data-lang');
+  
+                  selectedCurrency = currency;
+  
+                  currentCurrencyEl.textContent = currency;
+                  currentFlag.innerHTML = `<img src="/static/assets/img/${flag}" width="20">`;
+  
+                  priceEls.forEach((el, index) => {
+                      const packageName = `package${index + 1}`;
+                      const usdPrice = basePrices[packageName];
+                      const converted = (usdPrice * exchangeRates[currency]).toFixed(2);
+                      el.textContent = currency === 'USD' ? `$${usdPrice}` : `${converted} ${currency}`;
+                  });
+  
+                  const buttons = document.querySelectorAll('.btn-day');
+                  buttons.forEach((button, index) => {
+                      const packageName = `package${index + 1}`;
+                      button.setAttribute('data-link', paymentLinks[currency][packageName]);
+                  });
+  
+                  buttons[0]?.click();
+                  menu.classList.remove('show');
+  
+                  changeLanguage(language); // ✅ الاستدعاء الصحيح للغة
+              });
+          });
+  
+          // استرجاع اللغة المختارة مسبقًا إذا وُجدت
+          const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+          changeLanguage(savedLang);
+  
+          setCurrencyBasedOnLocation();
+  
+          priceEls.forEach((el, index) => {
+              const packageName = `package${index + 1}`;
+              const usdPrice = basePrices[packageName];
+              el.textContent = `$${usdPrice}`;
+          });
+  
+          const buttons = document.querySelectorAll('.btn-day');
+          buttons.forEach(button => {
+              button.addEventListener('click', () => {
+                  buttons.forEach(btn => btn.classList.remove('active'));
+                  button.classList.add('active');
+  
+                  const price = button.getAttribute("data-price");
+                  const link = button.getAttribute("data-link");
+                  const priceValue = document.getElementById("price-value");
+  
+                  priceValue.textContent = `${Number(price).toLocaleString()} ${selectedCurrency}`;
+                  document.getElementById("checkout-link").href = link;
+              });
+          });
+  
+          const workoutButtons = document.querySelectorAll('.workout-button');
+          workoutButtons.forEach(button => {
+              button.addEventListener('click', () => {
+                  const workoutCount = button.getAttribute('data-workout-count');
+                  workoutNumberEl.textContent = workoutCount;
+              });
+          });
+      });
+  </script>
+      
+   
+      <script>
+        // انتظر حتى يتم تحميل DOM بالكامل
+        document.addEventListener('DOMContentLoaded', function() {
+            /*=============== SHOW MENU ===============*/
+            const navMenu = document.getElementById('nav-menu'),
+                  navToggle = document.getElementById('nav-toggle'),
+                  navClose = document.getElementById('nav-close');
+    
+            /*===== MENU SHOW =====*/
+            if (navToggle) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.add('show-menu');
+                });
+            }
+    
+            /*===== MENU HIDDEN =====*/
+            if (navClose) {
+                navClose.addEventListener('click', () => {
+                    navMenu.classList.remove('show-menu');
+                });
+            }
+    
+            /*=============== REMOVE MENU MOBILE ===============*/
+            const navLink = document.querySelectorAll('.nav__link');
+            const linkAction = () => {
+                navMenu.classList.remove('show-menu');
+            };
+            navLink.forEach(n => n.addEventListener('click', linkAction));
+    
+            /*=============== ADD SHADOW HEADER ===============*/
+            const shadowHeader = () => {
+                const header = document.getElementById('header');
+                window.scrollY >= 50 ? header.classList.add('shadow-header') :
+                    header.classList.remove('shadow-header');
+            };
+            window.addEventListener('scroll', shadowHeader);
+        });
+      </script>
+      <script src="{% static 'assets/js/lang2.js' %}"></script>
+
+  </body>
+</html>

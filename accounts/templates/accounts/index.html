@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--=============== FAVICON ===============-->
+  {% load static %}
+  <link rel="shortcut icon" href="{% static 'assets/img/logo-2.svg' %}" type="image/x-icon">
+
+  <!--=============== REMIXICONS ===============-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+  {% comment %} <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}"> {% endcomment %}
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <!--=============== CSS ===============-->
+  <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+  <title>Omar</title>
+</head>
+
+<body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="{% url 'index' %}" class="nav__logo"><img style="width:75%;" src="{% static 'assets/img/logo-2.svg' %}" alt="" class="logohat"></a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li>
+                        <a href="#home" class="nav__link" data-lang="homenav">HOME</a>
+                    </li>
+
+                    <li>
+                        <a href="#about" class="nav__link" data-lang="aboutnav">ABOUT </a>
+                    </li>
+
+                    <li>
+                        <a href="#trans" class="nav__link" data-lang="transvnav">TRANSFORMATION</a>
+                    </li>
+
+                    <li>
+                        <a href="#testimonial" class="nav__link" data-lang="testimonialvnav">
+                            TESTIMONIAL
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#menu" class="nav__link" data-lang="packagevnav">
+                            PACKAGE
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#calc" class="nav__link" data-lang="clacvnav">CALCULATOR</a>
+                    </li>
+                </ul>
+                <div class="nav__colse" id="nav-close">
+                    <i class="ri-close-large-line"></i>
+                </div>
+            </div>
+            <button type="button" id="openCurrencyMenu" class="btn--rounded-gray">
+                <span class="flag-icon" id="currentFlag">
+                    <img src="{% static 'assets/img/usd.webp' %}" width="20" />
+                </span>
+                <span class="mx-1.5">|</span>
+                <span id="currentCurrency">USD</span>
+            </button>
+            
+            <div class="language-currency-menu popup" id="currencyMenu">
+                <div class="menu-header">
+                    <span style="color: #ff9500;">اختر اللغة والعملة</span>
+                    <span class="close-btn" id="closeMenu">&times;</span>
+                </div>
+            
+                <div class="menu-options">
+                    <div class="menu-item" data-lang="ar" data-currency="EGP" data-flag="eg.png">
+                        <img src="{% static 'assets/img/eg.png' %}" alt="العلم المصري" class="flag-icon">
+                        <span>العربية - الجنيه المصري (EGP)</span>
+                    </div>
+                    <div class="menu-item" data-lang="ar" data-currency="SAR" data-flag="saudi.webp">
+                        <img src="{% static 'assets/img/saudi.webp' %}" alt="العلم السعودي" class="flag-icon">
+                        <span>العربية - الريال السعودي (SAR)</span>
+                    </div>
+                    <div class="menu-item" data-lang="ar" data-currency="AED" data-flag="unitearab.webp">
+                        <img src="{% static 'assets/img/unitearab.webp' %}" alt="العلم الإماراتي" class="flag-icon">
+                        <span>العربية - الدرهم الإماراتي (AED)</span>
+                    </div>
+                    <div class="menu-item" data-lang="en" data-currency="USD" data-flag="usd.webp">
+                        <img src="{% static 'assets/img/usd.webp' %}" alt="العلم الأمريكي" class="flag-icon">
+                        <span>English - US Dollar (USD)</span>
+                    </div>
+                </div>
+            </div>
+
+
+        
+
+
+              <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-apps-2-fill"></i>
+              </div>
+        </nav>
+    </header>
+
+    <!--==================== MAIN ====================-->
+    <main class="main">
+        <!--==================== HOME ====================-->
+        <section class="home section" id="home">
+            <div class="video-container">
+                <video class="home__video" autoplay muted loop>
+                    <source src="{% static 'assets/img/m.mp4' %}" type="video/mp4">
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+            <div class="home__container container grid">
+                <div class="home__data">
+                    <h1 class="home__title" data-lang="homeh1">Transform Your Life, One Step at a Time</h1>
+                    <p class="home__description"data-lang="homep" >
+                        Transform your fitness with personalized coaching. Build strength, lose weight, and improve health. Let’s get started!
+                    </p>
+                    <!-- <img src="assets/img/cer10.jpg" alt="" class="home__meat"> -->
+                    <div class="home__buttons">
+                        <a href="#menu" class="button" data-lang="homebutton1">Start Your Journey</a>
+                        <a href="#menu" class="button button__ghost" data-lang="homebutton2">Explore Plans</a>
+                    </div>
+                </div>
+                <div class="home__images">
+                    <div class="home__circle">
+                        <div class="home__subcricle"></div>
+                    </div>
+                    <img src="{% static 'assets/img/personalfav.webp' %}" alt="" class="home__img">
+
+
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="brand section" id="brand" data-aos="fade-left">
+            <h2 class="section__title" data-lang="brandh2">
+                Certified Expertise You Can Trust
+            </h2>
+            <div class="brand__container container grid">
+                <img src="{% static 'assets/img/cer1.webp' %}" alt="" class="brand__img">
+                <img src="{% static 'assets/img/cer2.webp' %}" alt="" class="brand__img">
+                <img src="{% static 'assets/img/cer3.webp' %}" alt="" class="brand__img">
+                <img src="{% static 'assets/img/cer4.webp' %}" alt="" class="brand__img">
+
+            </div>
+
+        </section>
+
+        <!--==================== ABOUT ====================-->
+        <section class="about section" id="about" data-aos="fade-right">
+            <div class="about__container container grid">
+                <div class="about__data">
+                    <h2 class="section__title" data-lang="abouth2home1">Learn More About Us</h2>
+                    <p class="about__description" data-lang="aboutphome1">
+                        Hi, I’m Omar El-Mahdy, an online fitness coach and nutrition specialist with over 4 years of experience. I’ve helped more than 1,000 women transform their lives through personalized training and nutrition plans. Whether you’re looking to build strength,
+                        lose weight, or improve your overall health, I’m here to guide you every step of the way.
+                    </p>
+                    <a href="{% url 'about' %}" class="button" data-lang="aboutbuutton">Know More</a>
+                </div>
+                <div class="about__images">
+                    <div class="about__shape"></div>
+                    <img src="{% static 'assets/img/prof5.webp' %}" alt="Fitness Coach" class="about__coffee">
+                </div>
+            </div>
+        </section>
+        <!--==================== POPULAR ====================-->
+        <section class="container89" id="trans" data-aos="fade-left">
+            <div class="card__container swiper">
+                <div class="card__content">
+                    <h2 class="section__title" data-lang="transformationh2"> Your results my passion </h2>
+                    <div class="swiper-wrapper">
+                        <article class="card__article swiper-slide">
+                            <div class="card__image">
+                                <img src="{% static 'assets/img/trans1.webp' %}" alt="image" class="card__img">
+                                <div class="card__shadow"></div>
+                            </div>
+
+                            <div class="card__data">
+                                <h3 class="card__name" data-lang="transformationh31">Bulking</h3>
+                                <p class="card__description">
+                                    Passionate about development and design, I carry out projects at the request of users.
+                                </p>
+
+                                <a href="https://www.instagram.com/omarelmahdyy_transformations?igsh=a3lnY3huYXNwbHlp" class="card__button" data-lang="transformationseebutton1">See More</a>
+                            </div>
+                        </article>
+
+                        <article class="card__article swiper-slide">
+                            <div class="card__image">
+                                <img src="{% static 'assets/img/trans2.webp' %}" alt="image" class="card__img">
+                                <div class="card__shadow"></div>
+                            </div>
+
+                            <div class="card__data">
+                                <h3 class="card__name" data-lang="transformationh32">Body recomposition</h3>
+                                <p class="card__description">
+                                    Passionate about development and design, I carry out projects at the request of users.
+                                </p>
+
+                                <a href="https://www.instagram.com/omarelmahdyy_transformations?igsh=a3lnY3huYXNwbHlp" class="card__button" data-lang="transformationseebutton2">See More</a>
+                            </div>
+                        </article>
+
+                        <article class="card__article swiper-slide">
+                            <div class="card__image">
+                                <img src="{% static 'assets/img/trans3.webp' %}" alt="image" class="card__img">
+                                <div class="card__shadow"></div>
+                            </div>
+
+                            <div class="card__data">
+                                <h3 class="card__name" data-lang="transformationh33">Bulking</h3>
+                                <p class="card__description">
+                                    Passionate about development and design, I carry out projects at the request of users.
+                                </p>
+
+                                <a href="https://www.instagram.com/omarelmahdyy_transformations?igsh=a3lnY3huYXNwbHlp" class="card__button" data-lang="transformationseebutton3">See More</a>
+                            </div>
+                        </article>
+
+                        <article class="card__article swiper-slide">
+                            <div class="card__image">
+                                <img src="{% static 'assets/img/trans4.webp' %}" alt="image" class="card__img">
+                                <div class="card__shadow"></div>
+                            </div>
+
+                            <div class="card__data">
+                                <h3 class="card__name" data-lang="transformationh34">Bulking</h3>
+                                <p class="card__description">
+                                    Passionate about development and design, I carry out projects at the request of users.
+                                </p>
+
+                                <a href="https://www.instagram.com/omarelmahdyy_transformations?igsh=a3lnY3huYXNwbHlp" class="card__button" data-lang="transformationseebutton4">See More</a>
+                            </div>
+                        </article>
+
+                        <article class="card__article swiper-slide">
+                            <div class="card__image">
+                                <img src="{% static 'assets/img/trans5.webp' %}" alt="image" class="card__img">
+                                <div class="card__shadow"></div>
+                            </div>
+
+                            <div class="card__data">
+                                <h3 class="card__name" data-lang="transformationh35">Bulking</h3>
+                                <p class="card__description">
+                                    Passionate about development and design, I carry out projects at the request of users.
+                                </p>
+
+                                <a href="https://www.instagram.com/omarelmahdyy_transformations?igsh=a3lnY3huYXNwbHlp" class="card__button" data-lang="transformationseebutton5">See More</a>
+                            </div>
+                        </article>
+
+                        <article class="card__article swiper-slide">
+                            <div class="card__image">
+                                <img src="{% static 'assets/img/trans6.webp' %}" alt="image" class="card__img">
+                                <div class="card__shadow"></div>
+                            </div>
+
+                            <div class="card__data">
+                                <h3 class="card__name" data-lang="transformationh36">Body recomposition</h3>
+                                <p class="card__description">
+                                    Passionate about development and design, I carry out projects at the request of users.
+                                </p>
+
+                                <a href="https://www.instagram.com/omarelmahdyy_transformations?igsh=a3lnY3huYXNwbHlp" class="card__button" data-lang="transformationseebutton6">See More</a>
+                            </div>
+                        </article>
+
+                        <article class="card__article swiper-slide">
+                            <div class="card__image">
+                                <img src="{% static 'assets/img/trans7.webp' %}" alt="image" class="card__img">
+                                <div class="card__shadow"></div>
+                            </div>
+
+                            <div class="card__data">
+                                <h3 class="card__name" data-lang="transformationh37">Bulking</h3>
+                                <p class="card__description">
+                                    Passionate about development and design, I carry out projects at the request of users.
+                                </p>
+
+                                <a href="https://www.instagram.com/omarelmahdyy_transformations?igsh=a3lnY3huYXNwbHlp" class="card__button" data-lang="transformationseebutton7">See More</a>
+                            </div>
+                        </article>
+
+                        <article class="card__article swiper-slide">
+                            <div class="card__image">
+                                <img src="{% static 'assets/img/trans8.webp' %}" alt="image" class="card__img">
+                                <div class="card__shadow"></div>
+                            </div>
+
+                            <div class="card__data">
+                                <h3 class="card__name" data-lang="transformationh38">Body recomposition</h3>
+                                <p class="card__description">
+                                    Passionate about development and design, I carry out projects at the request of users.
+                                </p>
+
+                                <a href="https://www.instagram.com/omarelmahdyy_transformations?igsh=a3lnY3huYXNwbHlp" class="card__button" data-lang="transformationseebutton8">See More</a>
+                            </div>
+                        </article>
+
+                        <article class="card__article swiper-slide">
+                            <div class="card__image">
+                                <img src="{% static 'assets/img/trans9.webp' %}" alt="image" class="card__img">
+                                <div class="card__shadow"></div>
+                            </div>
+
+                            <div class="card__data">
+                                <h3 class="card__name" data-lang="transformationh39">Bulking</h3>
+                                <p class="card__description">
+                                    Passionate about development and design, I carry out projects at the request of users.
+                                </p>
+
+                                <a href="https://www.instagram.com/omarelmahdyy_transformations?igsh=a3lnY3huYXNwbHlp" class="card__button" data-lang="transformationseebutton9">See More</a>
+                            </div>
+                        </article>
+
+                        <article class="card__article swiper-slide">
+                            <div class="card__image">
+                                <img src="{% static 'assets/img/trans10.webp' %}" alt="image" class="card__img">
+                                <div class="card__shadow"></div>
+                            </div>
+
+                            <div class="card__data">
+                                <h3 class="card__name" data-lang="transformationh310">Body recomposition</h3>
+                                <p class="card__description">
+                                    Passionate about development and design, I carry out projects at the request of users.
+                                </p>
+
+                                <a href="https://www.instagram.com/omarelmahdyy_transformations?igsh=a3lnY3huYXNwbHlp" class="card__button" data-lang="transformationseebutton10">See More</a>
+                            </div>
+                        </article>
+
+                        <article class="card__article swiper-slide">
+                            <div class="card__image">
+                                <img src="{% static 'assets/img/trans11.webp' %}" alt="image" class="card__img">
+                                <div class="card__shadow"></div>
+                            </div>
+
+                            <div class="card__data">
+                                <h3 class="card__name" data-lang="transformationh311">Bulking</h3>
+                                <p class="card__description">
+                                    Passionate about development and design, I carry out projects at the request of users.
+                                </p>
+
+                                <a href="https://www.instagram.com/omarelmahdyy_transformations?igsh=a3lnY3huYXNwbHlp" class="card__button" data-lang="transformationseebutton11">See More</a>
+                            </div>
+                        </article>
+
+                        <article class="card__article swiper-slide">
+                            <div class="card__image">
+                                <img src="{% static 'assets/img/trans12.webp' %}" alt="image" class="card__img">
+                                <div class="card__shadow"></div>
+                            </div>
+
+                            <div class="card__data">
+                                <h3 class="card__name" data-lang="transformationh312">Bulking</h3>
+                                <p class="card__description">
+                                    Passionate about development and design, I carry out projects at the request of users.
+                                </p>
+
+                                <a href="https://www.instagram.com/omarelmahdyy_transformations?igsh=a3lnY3huYXNwbHlp" class="card__button" data-lang="transformationseebutton12">See More</a>
+                            </div>
+                        </article>
+
+                        <article class="card__article swiper-slide">
+                            <div class="card__image">
+                                <img src="{% static 'assets/img/trasn13.webp' %}" alt="image" class="card__img">
+                                <div class="card__shadow"></div>
+                            </div>
+
+                            <div class="card__data">
+                                <h3 class="card__name" data-lang="transformationh313">Body recomposition</h3>
+                                <p class="card__description">
+                                    Passionate about development and design, I carry out projects at the request of users.
+                                </p>
+
+                                <a href="https://www.instagram.com/omarelmahdyy_transformations?igsh=a3lnY3huYXNwbHlp" class="card__button" data-lang="transformationseebutton13">See More</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Navigation buttons -->
+                <div class="swiper-button-next">
+                    <i class="ri-arrow-right-s-line"></i>
+                </div>
+
+                <div class="swiper-button-prev">
+                    <i class="ri-arrow-left-s-line"></i>
+                </div>
+
+                <!-- Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+        <div class="llpi">
+        <section class="menu section bd-container" id="menu">
+            <h2 class="section-title" data-lang="menuh2">Files without tracking</h2>
+        
+            <div class="menu__container bd-grid">
+                <div class="menu__content" data-package="package1">
+                    <img src="{% static 'assets/img/package/T.webp' %}" alt="" class="menu__img">
+                    <h3 class="menu__name" data-lang="menuh31">package1</h3>
+                    <span class="menu__detail" data-lang="menuhspan1">gold package</span>
+                    <span class="menu__preci">$55</span>
+                    <a href="{% url 'package1' %}" class="button menu__button"><i class="ri-shopping-basket-line"></i></a>
+                </div>
+        
+                <div class="menu__content" data-package="package2">
+                    <img src="{% static 'assets/img/package/TM.webp' %}" alt="" class="menu__img">
+                    <h3 class="menu__name"  data-lang="menuh32">package2</h3>
+                    <span class="menu__detail" data-lang="menuhspan2">silver package</span>
+                    <span class="menu__preci">$97</span>
+                    <a href="{% url 'package2' %}" class="button menu__button"><i class="ri-shopping-basket-line"></i></a>
+                </div>
+        
+                <div class="menu__content" data-package="package3">
+                    <img src="{% static 'assets/img/package/TS.webp' %}" alt="" class="menu__img">
+                    <h3 class="menu__name"  data-lang="menuh33">package3</h3>
+                    <span class="menu__detail" data-lang="menuhspan3">bronze package</span>
+                    <span class="menu__preci">$39</span>
+                    <a href="{% url 'package3' %}" class="button menu__button"><i class="ri-shopping-basket-line"></i></a>
+                </div>
+                <div class="menu__content" data-package="package3">
+                    <img src="{% static 'assets/img/package/W.webp' %}" alt="" class="menu__img">
+                    <h3 class="menu__name"  data-lang="menuh34">package4</h3>
+                    <span class="menu__detail" data-lang="menuhspan4">bronze package</span>
+                    <span class="menu__preci">$39</span>
+                    <a href="{% url 'package4' %}" class="button menu__button"><i class="ri-shopping-basket-line"></i></a>
+                </div>
+            </div>
+        </section>
+        </div>
+
+        
+        <section class="books section" id="books">
+            <div class="container">
+                <h2 class="section__title" data-lang="bookh2">Featured Books from the Coach</h2>
+                <div class="books__grid grid">
+                    <!-- Book 1 -->
+                    <div class="book__card">
+                        <div class="book__img-wrapper">
+                            <img src="{% static 'assets/img/book1.webp' %}" alt="Healthy Recipes Book" class="book__img" />
+                        </div>
+                        <div class="book__content">
+                            <h3 class="book__title" data-lang="bookh31">Healthy Recipes Book</h3>
+                            <p class="book__desc" data-lang="bookp1">
+                                If you are a woman trying to get your diet right, whether to lose weight, maintain it, or build strong muscles, this book is made just for you.
+                                Many people think healthy food is tasteless and involves deprivation. But the truth is, you can enjoy delicious, flavorful meals while keeping them balanced and nourishing.
+                            </p>
+                            <ul class="book__features">
+                                <li data-lang="ov">Over 90 easy-to-follow recipes</li>
+                                <li data-lang="ov2">High-protein and fiber-rich lunch and dinner options</li>
+                                <li data-lang="ov3">Low-calorie meals for fitness enthusiasts</li>
+                                <li data-lang="ov4">Healthy snacks and breakfasts with no extra calories</li>
+                                <li data-lang="ov5">Guilt-free desserts</li>
+                                <li data-lang="ov6">Protein-packed smoothies for post-workout recovery</li>
+                            </ul>
+                            <p class="book__price" id="book1-price">150 EGP</p>
+                            <button class="book__btn" data-lang="bookbutton1">📥 Buy Now</button>
+                        </div>
+                    </div>
+        
+                    <!-- Book 2 -->
+                    <div class="book__card">
+                        <div class="book__img-wrapper">
+                            <img src="{% static 'assets/img/book2.webp' %}" alt="Calories Guide Book" class="book__img" />
+                        </div>
+                        <div class="book__content">
+                            <h3 class="book__title" data-lang="bookh32">Calories Guide Book</h3>
+                            <p class="book__desc" data-lang="bookp2">
+                                The "Calorie Index Book" is your simple guide to track your calories without any complication. It includes over 500 food items, categorized and showing calories, protein, fat, and carbs per 100 grams.
+                            </p>
+                            <ul class="book__features">
+                                <li data-lang="ov7">Detailed breakdown of calories, protein, fat, and carbs for each food item</li>
+                                <li data-lang="ov8">Ideal for moms cooking healthy meals for their families</li>
+                                <li data-lang="ov9">Perfect for anyone tracking their nutrition, including athletes</li>
+                                <li data-lang="ov10">Helpful for weight loss, muscle gain, or maintaining a healthy lifestyle</li>
+                            </ul>
+                            <p class="book__price" id="book2-price">120 EGP</p>
+                            <button class="book__btn" data-lang="bookbutton2">📥 Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        
+       
+        <!--==================== CALC ====================-->
+        <section class="nutrantion section " id="calc" data-aos="fade-right">
+            <div class="nutrantion__container grid container">
+                <img src="{% static 'assets/img/calc.png' %}" alt="" class="nutrantion__img">
+
+                <div class="nutrantion__data">
+                    <h2 class="section__title nutrantion__title">
+                        <p data-lang="nurationp1" >DISCOVER YOUR </p>
+                        <p data-lang="nurationp2">CALORIE NEEDS</p>
+                    </h2>
+
+                    <p data-lang="nurationp3" class="nutrantion__description">
+                        Discover your daily calorie needs effortlessly with our exclusive calculator. Simply enter your age, weight, and height to get started. This tool is a gift from Coach Wasim to help you stay on track with your nutrition goals.
+                    </p>
+
+                    <div class="nutrantion__details">
+                        <div class="fle">
+                            <p class="nutrantion__details-description nutrantion__details-icon">
+                                <i class="ri-cake-3-line"></i>
+                                <p class="nutrantion__details-description nutrantion__details-icon" data-lang="nurationp11">Find out how many calories you need daily.</p>
+                            </p>
+                        </div>
+                        <div class="fle">
+                            <p class="nutrantion__details-description nutrantion__details-icon">
+                                <i class="ri-clipboard-fill"></i>
+                                <p class="nutrantion__details-description nutrantion__details-icon" data-lang="nurationp12"> Enter your age, weight, and height.</p>
+                            </p>
+                        </div>
+                        <div class="fle">
+                            <p class="nutrantion__details-description nutrantion__details-icon">
+                                <i class="ri-restaurant-fill"></i>
+                                <p class="nutrantion__details-description nutrantion__details-icon" data-lang="nurationp13">Personalized results for your goals.</p>
+                            </p>
+                        </div>
+                        
+                    </div>
+
+                    <a href="{% url 'test2' %}" class="button">
+                        <p data-lang="bookbutton">Get Start</p> <i class="ri-arrow-right-down-line button__icon"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonial section" id="testimonial">
+            <h2 class="section__title" data-lang="testimonialtitle">
+                Customer Opinions
+            </h2>
+            <div class="testimonial__container container">
+                <div class="testimonial__swiper swiper">
+                    <div class="swiper-wrapper">
+                        <article class="testimonial__card swiper-slide">
+                            <img src="{% static 'assets/img/tes1.webp' %}" alt="" class="testimonial__img">
+                            <h2 class="testimonial__title" data-lang="testimonial1">
+                                Nour
+                            </h2>
+                            <p class="testimonial__description" data-lang="testimonial2">
+                                Hey Omar, how are you? Honestly, everything is going great. The meal plan and workout routine are amazing. I can't believe I lost 10 kg of fat without feeling deprived of anything! My diet and physique have completely changed, and the difference is clearly
+                                visible in the pictures. It was truly an honor working with you during this period. You have great taste, you're very respectful, and you never hesitate to provide any information. Mashallah, you understand everything and
+                                are really skilled. My mindset about food and dieting has completely changed. Now, I eat well and properly while understanding exactly what goes into my body. I calculate everything, and I no longer stress about whether
+                                eating something will make me gain weight or ruin my diet. Before, I used to regain the weight I lost because I didn't understand things properly. Now, exercise has become an essential part of my daily routine, and I can't
+                                imagine my life without it. Honestly, everything about you is amazing. May God bless you! Thank you for everything and for all the effort you put in with me. I truly appreciate it                            </p>
+                            <div class="testimonial__stars">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                        </article>
+                        <article class="testimonial__card swiper-slide">
+                            <img src="{% static 'assets/img/tes2.webp' %}" alt="" class="testimonial__img">
+                            <h2 class="testimonial__title" data-lang="testimonial3">
+                                Noran Marwan
+                            </h2>
+                            <p class="testimonial__description" data-lang="testimonial4">
+                                Coach, if you only knew how much you've changed things I once thought were impossible! Whenever I heard people talk about a healthy lifestyle, I used to imagine it as something extremely difficult that required immense strength and determination—something
+                                I never thought I had. But you truly made it simple for me. Even on days when I struggled to stay committed, you always made it feel manageable and not like a big deal. Thank you so much! 🌹 At first, I just wanted to see
+                                how far I could go in reducing my body fat percentage. But honestly, I had completely lost hope in losing weight due to all the health issues I was dealing with. When I once visited a gynecologist, she advised me to see
+                                a surgeon and undergo a gastric sleeve surgery. And when I went to the surgeon, he actually turned me away! 🤣🤣 I even considered other procedures like the balloon or smart capsule, thinking they were my only options.
+                                But now, I'm so grateful! I've already lost 15 kg, and my goal is to reach 25 kg. Thanks to God, I'm in great health, feeling amazing, and still progressing. May God bless you for all your efforts—you never fail to support
+                                me! ❤️❤️❤️🌹🌹🌹</p>
+                            <div class="testimonial__stars">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                        </article>
+                        <article class="testimonial__card swiper-slide">
+                            <img src="{% static 'assets/img/tes3.webp' %}" alt="" class="testimonial__img">
+                            <h2 class="testimonial__title" data-lang="testimonial5">
+                                Mariam Ahmed
+                            </h2>
+                            <p class="testimonial__description" data-lang="testimonial6">
+                                Coach, I swear, in just a few weeks, my body has completely transformed—180 degrees! I can't even describe how happy I am with the results! My stomach and waist look completely different—it's unbelievable! My body has changed so much that I've reached
+                                a level I never thought possible. Today at the gym, everyone was commenting on my progress, asking me how I managed to achieve this transformation. When someone truly gets inside your head, motivates you, and guides you
+                                properly, you realize the process is actually much easier and faster than you ever imagined—especially when that person is as incredible as you. Thank you so much, truly! Every single word or piece of advice you gave me,
+                                I took to heart and applied exactly as you said. And honestly, that's what made all the difference for me—it was all about mindset and following what you taught me!                            </p>
+                            <div class="testimonial__stars">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                        </article>
+                        <article class="testimonial__card swiper-slide">
+                            <img src="{% static 'assets/img/tes5.webp' %}" alt="" class="testimonial__img">
+                            <h2 class="testimonial__title" data-lang="testimonial7">
+                                Talia Youssef
+                            </h2>
+                            <p class="testimonial__description" data-lang="testimonial8">
+                                The transformation has been incredible! My body shape has changed so much, even though I wasn't fully committed to training and diet. If I had been more disciplined, the results would have been even better! My skin has also improved significantly—something
+                                I didn't expect at all! At first, the workout schedule overwhelmed me 😂, but later, I actually started enjoying it. The training is well-structured and makes a huge difference. As for food, I was amazed that I could still
+                                eat what I love without a complicated diet plan. Understanding that I can enjoy my meals made the whole journey much easier and more comfortable for me. Honestly, everything has been great! The only issue was the time difference,
+                                which sometimes delayed responses, but that's totally fine. Most importantly, you're professional, respectful, and genuinely dedicated to helping people. You never hold back any valuable information, and that's exactly
+                                why I decided to sign up with you. ❤️🙏🏻🙏🏻                            </p>
+                            <div class="testimonial__stars">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                        </article>
+                        <article class="testimonial__card swiper-slide">
+                            <img src="{% static 'assets/img/tes8.webp' %}" alt="" class="testimonial__img">
+                            <h2 class="testimonial__title" data-lang="testimonial9">
+                                Jana Sami
+                            </h2>
+                            <p class="testimonial__description" data-lang="testimonial10">
+                                Honestly, this isn't just feedback for the sake of giving feedback—I truly mean every word. You are an outstanding and successful person, and I genuinely wish you more success. I have changed so much, and I now feel a level of confidence I never had before—all
+                                because of you and what I've learned from you. I never knew how to eat properly, but now I've learned how to eat well without depriving myself. I can't even explain exactly what you did, but I'm extremely happy with the
+                                results and continuing my journey because of you. Your professionalism is incredible—any time I asked you something, you always had the right answer. Despite my busy schedule and all the challenges, I still achieved amazing
+                                results, and I'm truly happy about it. I was so eager to share my progress photos, and I wish you all the success because you truly deserve it. ❤️                          </p>
+                            <div class="testimonial__stars">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /*=============== VISIT ===============*/ -->
+
+        <section class="visit" id="visit">
+            <div class="visit__container">
+                <img src=" {% static 'assets/img/black/background3.webp' %} " alt="" class="visit__bg">
+                <div class="visit__shadow"></div>
+                <div class="visit__content container grid">
+                    <div class="visit__data">
+                        <h2 data-lang="visith2" style="color: #499569;" class="section__title">Join Our Online Coaching</h2>
+                        <p data-lang="visitp" class="visit__description">
+                            If you're a girl looking to train online with personalized coaching, just send a message to the number below and start your fitness journey with Coach Omar today!
+                        </p>
+                        <a data-lang="visitbutton" style="background: #499569;" href="https://wa.me/201123453575" class="button">Contact Us on WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% comment %} <section style="background: transparent;" class="testimonial section" id="testimonial" data-aos="fade-right">
+            <h2 class="section__title"  data-lang="testimonialh21">
+                Testimonial
+            </h2>
+            <div class="testimonial__container container">
+                <div class="testimonial__swiper swiper">
+                    <div class="swiper-wrapper">
+                        <article class="testimonial__card swiper-slide">
+                            <img src="{% static 'assets/img/tes1.jpg' %}" alt="" class="testimonial__img">
+                            <h2 class="testimonial__title"  data-lang="testimonialnameh21">
+                                Nour
+                            </h2>
+                            <p class="testimonial__description"    data-lang="testimonialdescription1">
+                                Hey Omar, how are you? Honestly, everything is going great. The meal plan and workout routine are amazing. I can't believe I lost 10 kg of fat without feeling deprived of anything! My diet and physique have completely changed, and the difference is clearly
+                                visible in the pictures. It was truly an honor working with you during this period. You have great taste, you're very respectful, and you never hesitate to provide any information. Mashallah, you understand everything and
+                                are really skilled. My mindset about food and dieting has completely changed. Now, I eat well and properly while understanding exactly what goes into my body. I calculate everything, and I no longer stress about whether
+                                eating something will make me gain weight or ruin my diet. Before, I used to regain the weight I lost because I didn't understand things properly. Now, exercise has become an essential part of my daily routine, and I can't
+                                imagine my life without it. Honestly, everything about you is amazing. May God bless you! Thank you for everything and for all the effort you put in with me. I truly appreciate it </p>
+                            <div class="testimonial__stars">
+                                <i class="ri-heart-fill"></i>
+                                <i class="ri-heart-fill"></i>
+                                <i class="ri-heart-fill"></i>
+                                <i class="ri-heart-fill"></i>
+                                <i class="ri-heart-fill"></i>
+                            </div>
+                        </article>
+                        <article class="testimonial__card swiper-slide">
+                            <img src="{% static 'assets/img/tes2.jpg' %}" alt="" class="testimonial__img">
+                            <h2 class="testimonial__title"   data-lang="testimonialnameh22">
+                                Noran Marwan
+                            </h2>
+                            <p class="testimonial__description"    data-lang="testimonialdescription2">
+                                Coach, if you only knew how much you've changed things I once thought were impossible! Whenever I heard people talk about a healthy lifestyle, I used to imagine it as something extremely difficult that required immense strength and determination—something
+                                I never thought I had. But you truly made it simple for me. Even on days when I struggled to stay committed, you always made it feel manageable and not like a big deal. Thank you so much! 🌹 At first, I just wanted to see
+                                how far I could go in reducing my body fat percentage. But honestly, I had completely lost hope in losing weight due to all the health issues I was dealing with. When I once visited a gynecologist, she advised me to see
+                                a surgeon and undergo a gastric sleeve surgery. And when I went to the surgeon, he actually turned me away! 🤣🤣 I even considered other procedures like the balloon or smart capsule, thinking they were my only options.
+                                But now, I'm so grateful! I've already lost 15 kg, and my goal is to reach 25 kg. Thanks to God, I'm in great health, feeling amazing, and still progressing. May God bless you for all your efforts—you never fail to support
+                                me! ❤️❤️❤️🌹🌹🌹
+                                <div class="testimonial__stars">
+                                    <i class="ri-heart-fill"></i>
+                                    <i class="ri-heart-fill"></i>
+                                    <i class="ri-heart-fill"></i>
+                                    <i class="ri-heart-fill"></i>
+                                    <i class="ri-heart-fill"></i>
+                                </div>
+                        </article>
+                        <article class="testimonial__card swiper-slide">
+                            <img src="{% static 'assets/img/tes3.jpg' %}" alt="" class="testimonial__img">
+                            <h2 class="testimonial__title"   data-lang="testimonialnameh23">
+                                Mariam Ahmed
+                            </h2>
+                            <p class="testimonial__description"    data-lang="testimonialdescription3">
+                                Coach, I swear, in just a few weeks, my body has completely transformed—180 degrees! I can't even describe how happy I am with the results! My stomach and waist look completely different—it's unbelievable! My body has changed so much that I've reached
+                                a level I never thought possible. Today at the gym, everyone was commenting on my progress, asking me how I managed to achieve this transformation. When someone truly gets inside your head, motivates you, and guides you
+                                properly, you realize the process is actually much easier and faster than you ever imagined—especially when that person is as incredible as you. Thank you so much, truly! Every single word or piece of advice you gave me,
+                                I took to heart and applied exactly as you said. And honestly, that's what made all the difference for me—it was all about mindset and following what you taught me!
+                                <div class="testimonial__stars">
+                                    <i class="ri-heart-fill"></i>
+                                    <i class="ri-heart-fill"></i>
+                                    <i class="ri-heart-fill"></i>
+                                    <i class="ri-heart-fill"></i>
+                                    <i class="ri-heart-fill"></i>
+                                </div>
+                        </article>
+                        <article class="testimonial__card swiper-slide">
+                            <img src="{% static 'assets/img/tes5.jpg' %}" alt="" class="testimonial__img">
+                            <h2 class="testimonial__title"   data-lang="testimonialnameh24">
+                                Talia Youssef
+                            </h2>
+                            <p class="testimonial__description"   data-lang="testimonialdescription4">
+                                The transformation has been incredible! My body shape has changed so much, even though I wasn't fully committed to training and diet. If I had been more disciplined, the results would have been even better! My skin has also improved significantly—something
+                                I didn't expect at all! At first, the workout schedule overwhelmed me 😂, but later, I actually started enjoying it. The training is well-structured and makes a huge difference. As for food, I was amazed that I could still
+                                eat what I love without a complicated diet plan. Understanding that I can enjoy my meals made the whole journey much easier and more comfortable for me. Honestly, everything has been great! The only issue was the time difference,
+                                which sometimes delayed responses, but that's totally fine. Most importantly, you're professional, respectful, and genuinely dedicated to helping people. You never hold back any valuable information, and that's exactly
+                                why I decided to sign up with you. ❤️🙏🏻🙏🏻
+                                <div class="testimonial__stars">
+                                    <i class="ri-heart-fill"></i>
+                                    <i class="ri-heart-fill"></i>
+                                    <i class="ri-heart-fill"></i>
+                                    <i class="ri-heart-fill"></i>
+                                    <i class="ri-heart-fill"></i>
+                                </div>
+                        </article>
+
+                        <article class="testimonial__card swiper-slide">
+                            <img src="{% static 'assets/img/tes8.jpg' %}" alt="" class="testimonial__img">
+                            <h2 class="testimonial__title" data-lang="testimonialnameh25">
+                                Jana Sami
+                            </h2>
+                            <p class="testimonial__description"    data-lang="testimonialdescription5">
+                                Honestly, this isn't just feedback for the sake of giving feedback—I truly mean every word. You are an outstanding and successful person, and I genuinely wish you more success. I have changed so much, and I now feel a level of confidence I never had before—all
+                                because of you and what I've learned from you. I never knew how to eat properly, but now I've learned how to eat well without depriving myself. I can't even explain exactly what you did, but I'm extremely happy with the
+                                results and continuing my journey because of you. Your professionalism is incredible—any time I asked you something, you always had the right answer. Despite my busy schedule and all the challenges, I still achieved amazing
+                                results, and I'm truly happy about it. I was so eager to share my progress photos, and I wish you all the success because you truly deserve it. ❤️
+                                <div class="testimonial__stars">
+                                    <i class="ri-heart-fill"></i>
+                                    <i class="ri-heart-fill"></i>
+                                    <i class="ri-heart-fill"></i>
+                                    <i class="ri-heart-fill"></i>
+                                    <i class="ri-heart-fill"></i>
+                                </div>
+                        </article>
+
+                    </div>
+                </div>
+            </div>
+        </section> {% endcomment %}
+        <!--==================== CALC ====================-->
+        {% comment %} <section class="pricing section" id="pricing">
+            <div class="container">
+              <div class="section__data">
+                <div class="sectin__titles">
+                  <h1 class="section__title">SPECIAL PLAN</h1>
+                  <div class="currency-buttons">
+                    <button class="duration-btn active" data-duration="1">شهر</button>
+                    <button class="duration-btn" data-duration="3">3 شهور</button>
+                    <button class="duration-btn" data-duration="6">6 شهور</button>
+                  </div>
+                </div>
+              </div>
+          
+              <div class="pricing__container grid">
+                <!-- SUPER PINK PLUS -->
+                <article class="pricing__card">
+                  <header class="pricing__header">
+                    <div class="pricing__shape">
+                      <img src="{% static 'assets/img/pricing1.png' %}" alt="" class="pricing__img">
+                    </div>
+                    <h1 class="pricing__title">SUPER PINK PLUS</h1>
+                    <h2 class="pricing__number" data-package="1"></h2>
+                  </header>
+                  <ul class="pricing__list">
+                    <li class="pricing__item"><i class="ri-trophy-fill"></i> 6 Days a Week</li>
+                    <li class="pricing__item"><i class="ri-trophy-fill"></i> Customized Diet Plan</li>
+                    <li class="pricing__item"><i class="ri-trophy-fill"></i> Full Training Program</li>
+                    <li class="pricing__item"><i class="ri-trophy-fill"></i> Direct Follow-up With Female Coach</li>
+                    <li class="pricing__item"><i class="ri-trophy-fill"></i> Weekly Progress Tracking</li>
+                  </ul>
+                  <a href="#" class="button button__flex pricing__button" style="background-color: pink;">
+                    <i class="ri-store-2-fill"></i>
+                  </a>
+                </article>
+          
+                <!-- SUPER PINK -->
+                <article class="pricing__card pricing__card-active">
+                  <header class="pricing__header">
+                    <div class="pricing__shape">
+                      <img src="{% static 'assets/img/pricing2.png' %}" alt="" class="pricing__img">
+                    </div>
+                    <h1 class="pricing__title">SUPER PINK</h1>
+                    <h2 class="pricing__number" data-package="2"></h2>
+                  </header>
+                  <ul class="pricing__list">
+                    <li class="pricing__item"><i class="ri-trophy-fill"></i> 5 Days a Week</li>
+                    <li class="pricing__item"><i class="ri-trophy-fill"></i> Workout Routine</li>
+                    <li class="pricing__item"><i class="ri-trophy-fill"></i> General Nutrition Plan</li>
+                    <li class="pricing__item"><i class="ri-trophy-fill"></i> Female Coach Follow-up</li>
+                    <li class="pricing__item"><i class="ri-trophy-fill"></i> Basic Progress Check</li>
+                  </ul>
+                  <a href="#" class="button button__flex pricing__button" style="background-color: pink;">
+                    <i class="ri-store-2-fill"></i>
+                  </a>
+                </article>
+          
+                <!-- BASIC PACKAGE -->
+                <article class="pricing__card">
+                  <header class="pricing__header">
+                    <div class="pricing__shape">
+                      <img src="{% static 'assets/img/pricing3.png' %}" alt="" class="pricing__img">
+                    </div>
+                    <h1 class="pricing__title">BASIC PACKAGE</h1>
+                    <h2 class="pricing__number" data-package="3"></h2>
+                  </header>
+                  <ul class="pricing__list">
+                    <li class="pricing__item"><i class="ri-trophy-fill"></i> 5 Days In A Week</li>
+                    <li class="pricing__item"><i class="ri-trophy-fill"></i> 01 Sweatshirt</li>
+                    <li class="pricing__item"><i class="ri-trophy-fill"></i> 01 Bottle of Protein</li>
+                    <li class="pricing__item"><i class="ri-trophy-fill"></i> Access to Videos</li>
+                    <li class="pricing__item"><i class="ri-trophy-fill"></i> Muscle Stretching</li>
+                  </ul>
+                  <a href="#" class="button button__flex pricing__button">
+                    <i class="ri-store-2-fill"></i>
+                  </a>
+                </article>
+              </div>
+            </div>
+          </section> {% endcomment %}
+       
+          
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer">
+        <div class="footer__container container grid">
+            <div>
+                <h3 class="footer__title" data-lang="footersocial">Social</h3>
+                <div class="footer__social">
+                   
+                    <a href="https://www.tiktok.com/@omarelmahdyy_?_t=ZS-8v847sHiWrA&_r=1" target="_blank" class="footer__social-link">
+                        <i class="ri-tiktok-fill"></i>
+                    </a>
+                  
+                    <a href="https://www.instagram.com/omarelmahdyy_?igsh=MThkNHpia2R0Y2Nzcg%3D%3D&utm_source=qr" target="_blank" class="footer__social-link">
+                        <i class="ri-instagram-line"></i>
+                    </a>
+    
+                    <a href="https://www.instagram.com/omarelmahdyy_transformations?igsh=MWR3czYwc3ZhZWh2cg==" target="_blank" class="footer__social-link">
+                        <i class="ri-instagram-fill"></i>
+                    </a>
+    
+                    <a href="https://www.facebook.com/share/157LKGppDq/?mibextid=wwXIfr" target="_blank" class="footer__social-link">
+                        <i class="ri-facebook-circle-fill"></i>
+                    </a>
+    
+                    <a href="http://wa.me/201123453575" target="_blank" class="footer__social-link">
+                        <i class="ri-whatsapp-fill"></i>
+                    </a>
+    
+                    <a href="https://youtube.com/@omarelmahdyy?si=qz5f3L4A3ambjjrb" target="_blank" class="footer__social-link">
+                        <i class="ri-youtube-fill"></i>
+                    </a>
+                    
+                </div>
+            </div>
+            <div>
+                <h3 class="footer__title" data-lang="footerpayment">Payment Method</h3>
+                <div class="footer__pay">
+                    <img src="{% static 'assets/img/footer-card-1.png' %}" alt="" class="footer__pay-card">
+                    <img src="{% static 'assets/img/footer-card-2.png' %}" alt="" class="footer__pay-card">
+                    <img src="{% static 'assets/img/footer-card-3.png' %}" alt="" class="footer__pay-card">
+                    <img src="{% static 'assets/img/footer-card-4.png' %}" alt="" class="footer__pay-card">
+                </div>
+            </div>
+            <div>
+                <h3 class="footer__title" data-lang="footersuscrinbe">Subscribe For Discounts</h3>
+                <form action="" class="footer__form">
+                    <input type="email" placeholder="Email" class="footer__input">
+                    <button class="footer__button button" data-lang="footersubscribe2">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+        <span class="footer__copy">
+            &#169; All Rights Reserved By <a href="#">Mo Alramly</a>
+        </span>
+    </footer>
+
+    <!--========== SCROLL UP ==========-->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="ri-arrow-up-double-fill"></i>
+    </a>
+    <!--=============== SWIPER JS ===============-->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // الأسعار المحددة يدويًا لكل عملة
+            const bookPrices = {
+                book1: {
+                    USD: 50,
+                    EGP: 99,
+                    SAR: 150,
+                    AED: 31
+                },
+                book2: {
+                    USD: 40,
+                    EGP: 80,
+                    SAR: 120,
+                    AED: 30
+                }
+            };
+    
+            // دالة لتغيير الأسعار بناءً على العملة
+            function setPrice(currency) {
+                const priceEls = document.querySelectorAll('.book__price');
+                
+                priceEls.forEach((el) => {
+                    const bookId = el.id;
+                    const bookKey = bookId.split('-')[0];
+                    const price = bookPrices[bookKey][currency];
+                    
+                    el.textContent = `${price} ${currency}`;
+                });
+    
+                // تحديث العملة المختارة في الـ header
+                document.getElementById('currentCurrency').textContent = currency;
+                const currencyImg = document.querySelector('#currentFlag img');
+                currencyImg.src = `{% static 'assets/img/${currency.toLowerCase()}.webp' %}`;
+            }
+    
+            // استخدام خدمة Geolocation لتحديد البلد
+            fetch('https://ipinfo.io/json?token=5f01ba4857444e')
+                .then(res => res.json())
+                .then(data => {
+                    const country = data.country; // الحصول على الدولة من خدمة ipinfo
+                    let currency = 'USD'; // العملة الافتراضية (الدولار الأمريكي)
+    
+                    // تحديد العملة بناءً على البلد
+                    if (country === 'EG') {
+                        currency = 'EGP'; // مصر -> الجنيه المصري
+                    } else if (country === 'SA') {
+                        currency = 'SAR'; // السعودية -> الريال السعودي
+                    } else if (country === 'AE') {
+                        currency = 'AED'; // الإمارات -> الدرهم الإماراتي
+                    } else if (country === 'US') {
+                        currency = 'USD'; // أمريكا -> الدولار الأمريكي
+                    }
+    
+                    setPrice(currency); // تعيين السعر بناءً على العملة
+                })
+                .catch(() => {
+                    setPrice('USD'); // في حال لم يتمكن من تحديد الموقع، استخدام الدولار كعملة افتراضية
+                });
+    
+            // إضافة حدث للنقر على العناصر في القائمة المنبثقة
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const currency = item.getAttribute('data-currency');
+                    setPrice(currency); // تغيير العملة عند الضغط على الخيار
+                    document.getElementById('currencyMenu').classList.remove('popup'); // إغلاق القائمة بعد التبديل
+                });
+            });
+    
+            // إغلاق القائمة عند الضغط على زر الإغلاق
+            document.getElementById('closeMenu').addEventListener('click', () => {
+                document.getElementById('currencyMenu').classList.remove('popup');
+            });
+    
+            // فتح القائمة عند الضغط على زر تغيير العملة
+            document.getElementById('openCurrencyMenu').addEventListener('click', () => {
+                document.getElementById('currencyMenu').classList.toggle('popup');
+            });
+        });
+    </script>
+    
+    
+
+
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/language&price.js' %}"></script>
+
+    <!-- يمكنك استخدام CDN أو النسخة المحلية -->
+
+    {% comment %} <script src="{% static 'assets/js/swiper-bundle.min.js' %}"></script> {% endcomment %}
+    {% comment %} <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> {% endcomment %}
+
+    <!-- scroll animation -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 200,
+            duration: 1500
+        });
+    </script>
+    <script src="https://app.embed.im/spark.js" defer></script>
+    {% comment %} <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const currencyMenuBtn = document.getElementById('openCurrencyMenu');
+            const closeCurrencyBtn = document.getElementById('closeMenu');
+            const currencyMenu = document.getElementById('currencyMenu');
+            const menuItems = document.querySelectorAll('.menu-item');
+            const currentCurrencyEl = document.getElementById('currentCurrency');
+            const currentFlag = document.getElementById('currentFlag');
+            const durationButtons = document.querySelectorAll('.duration-btn');
+            const pricingNumbers = document.querySelectorAll('.pricing__number');
+        
+            const basePrices = {
+                'package1': { // SUPER PINK PLUS
+                    '1': { USD: 55, EGP: 1700, AED: 202, SAR: 206 },
+                    '3': { USD: 150, EGP: 4700, AED: 550, SAR: 565 },
+                    '6': { USD: 280, EGP: 8800, AED: 1030, SAR: 1055 }
+                },
+                'package2': { // SUPER PINK
+                    '1': { USD: 40, EGP: 1250, AED: 147, SAR: 150 },
+                    '3': { USD: 110, EGP: 3400, AED: 402, SAR: 410 },
+                    '6': { USD: 200, EGP: 6300, AED: 730, SAR: 745 }
+                },
+                'package3': { // BASIC PACKAGE
+                    '1': { USD: 30, EGP: 950, AED: 110, SAR: 113 },
+                    '3': { USD: 85, EGP: 2600, AED: 310, SAR: 320 },
+                    '6': { USD: 160, EGP: 5000, AED: 580, SAR: 590 }
+                }
+            };
+        
+            let selectedCurrency = 'USD';
+            let selectedDuration = '1';
+        
+            // Auto-detect currency based on country
+            fetch('https://ipinfo.io/json?token=5f01ba4857444e')
+                .then(res => res.json())
+                .then(data => {
+                    const currency = getCurrencyForCountry(data.country);
+                    setCurrency(currency);
+                });
+        
+            function getCurrencyForCountry(country) {
+                if (country === 'EG') return 'EGP';
+                if (country === 'AE') return 'AED';
+                if (country === 'SA') return 'SAR';
+                return 'USD';
+            }
+        
+            function updatePrices() {
+                pricingNumbers.forEach((el, index) => {
+                    const packageKey = `package${index + 1}`;
+                    const price = basePrices[packageKey][selectedDuration][selectedCurrency];
+                    el.textContent = selectedCurrency === 'USD' ? `$${price}` : `${price} ${selectedCurrency}`;
+                });
+            }
+        
+            function setCurrency(currency) {
+                selectedCurrency = currency;
+                currentCurrencyEl.textContent = currency;
+                currentFlag.innerHTML = `<img src="{% static 'assets/img/${currency.toLowerCase()}.png' %}" width="20">`;
+                updatePrices();
+            }
+        
+            // Currency Menu
+            currencyMenuBtn?.addEventListener('click', () => currencyMenu.classList.add('show'));
+            closeCurrencyBtn?.addEventListener('click', () => currencyMenu.classList.remove('show'));
+        
+            menuItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const currency = item.getAttribute('data-currency');
+                    setCurrency(currency);
+                    currencyMenu.classList.remove('show');
+                });
+            });
+        
+            // Duration Buttons
+            durationButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    durationButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    selectedDuration = btn.getAttribute('data-duration');
+                    updatePrices();
+                });
+            });
+        
+            // Initial load
+            updatePrices();
+        });
+        </script> {% endcomment %}
+        
+   
+    
+</body>
+
+</html>
+
+</html>

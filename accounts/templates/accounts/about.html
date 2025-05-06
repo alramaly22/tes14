@@ -1,0 +1,693 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--=============== FAVICON ===============-->
+    <link
+      rel="shortcut icon"
+      href="{% static 'assets/img/logo-2.svg' %}"
+      type="image/x-icon"
+    />
+
+    <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'assets/css/swiper-bundle.min.css' %}"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}" />
+    <title>About Omar</title>
+  </head>
+
+  <body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a href="{% url 'index' %}" class="nav__logo">
+          <img
+            style="width: 45%"
+            src="{% static 'assets/img/logo-2.svg' %}"
+            alt=""
+            class="logohat"
+          />
+        </a>
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+            <li><a href="#home" class="nav__link"  data-lang="navhome">HOME</a></li>
+            <li><a href="#about" class="nav__link"  data-lang="navabout">ABOUT US</a></li>
+            <li><a href="#faqs" class="nav__link"  data-lang="navfaqs">FAQS</a></li>
+            <li><a href="#testimonial" class="nav__link"  data-lang="navtestimonial">TESTIMONIAL</a></li>
+            <li><a href="#footer" class="nav__link"  data-lang="navfooter">FOOTER</a></li>
+          </ul>
+          <div class="nav__colse" id="nav-close">
+            <i class="ri-close-large-line"></i>
+          </div>
+        </div>
+        <button type="button" id="openCurrencyMenu" class="btn--rounded-gray">
+          <span class="flag-icon" id="currentFlag">
+              <img src="{% static 'assets/img/usd.webp' %}" width="20" />
+          </span>
+          <span class="mx-1.5">|</span>
+          <span id="currentCurrency">USD</span>
+      </button>
+      
+      <div class="language-currency-menu popup" id="currencyMenu">
+          <div class="menu-header">
+              <span style="color: #ff9500;">اختر اللغة والعملة</span>
+              <span class="close-btn" id="closeMenu">&times;</span>
+          </div>
+      
+          <div class="menu-options">
+              <div class="menu-item" data-lang="ar" data-currency="EGP" data-flag="eg.png">
+                  <img src="{% static 'assets/img/eg.png' %}" alt="العلم المصري" class="flag-icon">
+                  <span>العربية - الجنيه المصري (EGP)</span>
+              </div>
+              <div class="menu-item" data-lang="ar" data-currency="SAR" data-flag="saudi.webp">
+                  <img src="{% static 'assets/img/saudi.webp' %}" alt="العلم السعودي" class="flag-icon">
+                  <span>العربية - الريال السعودي (SAR)</span>
+              </div>
+              <div class="menu-item" data-lang="ar" data-currency="AED" data-flag="unitearab.webp">
+                  <img src="{% static 'assets/img/unitearab.webp' %}" alt="العلم الإماراتي" class="flag-icon">
+                  <span>العربية - الدرهم الإماراتي (AED)</span>
+              </div>
+              <div class="menu-item" data-lang="en" data-currency="USD" data-flag="usd.webp">
+                  <img src="{% static 'assets/img/usd.webp' %}" alt="العلم الأمريكي" class="flag-icon">
+                  <span>English - US Dollar (USD)</span>
+              </div>
+          </div>
+      </div>
+
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="ri-apps-2-fill"></i>
+        </div>
+      </nav>
+    </header>
+
+    <!--==================== MAIN ====================-->
+    <main class="main">
+      <!--==================== HOME ====================-->
+      <section class="home section" id="home">
+        <div class="video-container">
+          <video class="home__video" autoplay muted loop>
+            <source src="{% static 'assets/img/m.mp4' %}" type="video/mp4" />
+          </video>
+          <div class="video-overlay"></div>
+        </div>
+        <div class="home__container container grid">
+          <div class="home__data">
+            <h1 class="home__title" data-lang="home_title">Become Stronger Healthier</h1>
+            <p class="home__description" data-lang="home_desc">
+              I'm Omar El-Mahdy, an online fitness coach. With 4+ years of
+              experience, I've helped 1,000+ women transform their lives. Let's
+              achieve your goals together!
+            </p>
+            <div class="home__buttons">
+              <a href="{% url 'index' %}#menu" class="button"
+              data-lang="home_start"  >Start Your Transformation</a
+              >
+              {% comment %} <a href="{% url 'index' %}#menu" class="button button__ghost"
+              data-lang="home_start"  >View Programs</a
+              > {% endcomment %}
+            </div>
+          </div>
+          <div class="home__images">
+            <div class="home__circle">
+              <div class="home__subcricle"></div>
+            </div>
+            <img
+              src="{% static 'assets/img/personalfav.webp' %}"
+              alt="Fitness Coach"
+              class="home__img"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="brand section" id="brand">
+        <h2 class="section__title" data-lang="brands">Certified Expertise You Can Trust</h2>
+        <div class="brand__container container grid">
+          <img
+            src="{% static 'assets/img/cer13.webp' %}"
+            alt=""
+            class="brand__img"
+            data-aos="fade-left"
+          />
+          <img
+            src="{% static 'assets/img/cer10.webp' %}"
+            alt=""
+            class="brand__img"
+            data-aos="fade-right"
+          />
+          <img
+            src="{% static 'assets/img/cer11.webp' %}"
+            alt=""
+            class="brand__img"
+            data-aos="fade-left"
+          />
+          <img
+            src="{% static 'assets/img/cer6.webp' %}"
+            alt=""
+            class="brand__img"
+            data-aos="fade-right"
+          />
+          <img
+            src="{% static 'assets/img/cer7.webp' %}"
+            alt=""
+            class="brand__img"
+            data-aos="fade-left"
+          />
+          <img
+            src="{% static 'assets/img/cer8.webp' %}"
+            alt=""
+            class="brand__img"
+            data-aos="fade-right"
+          />
+          <img
+            src="{% static 'assets/img/cer9.webp' %}"
+            alt=""
+            class="brand__img"
+            data-aos="fade-left"
+          />
+          <img
+            src="{% static 'assets/img/cer5.webp' %}"
+            alt=""
+            class="brand__img"
+            data-aos="fade-right"
+          />
+        </div>
+      </section>
+
+      <!--==================== ABOUT ====================-->
+      <section class="about section" id="about" data-aos="fade-left">
+        <div class="about__container container grid">
+          <div class="about__data">
+            <h2 class="section__title" data-lang="about_title">Learn More About Omar</h2>
+            <p class="about__description" >
+              <p data-lang="about_desc1" >Hi, I'm Omar El-Mahdy, an online fitness coach and nutrition
+                specialist with over 4 years of experience in transforming lives.
+                My journey began with a passion for fitness and a desire to help
+                others achieve their health and wellness goals. Over the years,
+                I've had the privilege of working with more than 1,000 women from
+                all walks of life, each with unique challenges and aspirations. </p>
+              
+              <p data-lang="about_desc2" >
+                I specialize in female training and nutrition, with a deep
+              understanding of women's health issues such as PCOS, thyroid
+              disorders, insulin resistance, and postpartum recovery. My
+              approach is holistic, focusing not just on physical transformation
+              but also on mental well-being and building a positive relationship
+              with food. </p>
+              <p data-lang="about_desc3" > What sets me apart is my commitment to personalized care. I work
+                closely with a dedicated medical team, including a
+                physiotherapist, pharmacist, and medical doctor, to ensure that
+                every client receives the best possible support. Whether you're
+                dealing with a specific health condition or simply looking to
+                improve your overall fitness, I'm here to guide you every step of
+                the way.</p>
+              <p data-lang="about_desc4" >
+                With over 10 certifications in nutrition, training, and mental
+              health, I bring a wealth of knowledge to my coaching. My mission
+              is to empower you to become the strongest, healthiest, and most
+              confident version of yourself. Let's embark on this journey
+              together and create lasting change! </p>
+            </p>
+          </div>
+          <div class="about__images">
+            <div class="about__shape"></div>
+            <img
+              src="{% static 'assets/img/te.webp' %}"
+              alt="Fitness Coach"
+              class="about__coffee"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!--==================== QUESTIONS ====================-->
+      <section class="questions section" id="faqs" data-aos="fade-right">
+        <h2 class="section__title questions__title container" data-lang="faq_title">
+          Frequently Asked Questions About Online Coaching
+        </h2>
+
+        <div class="questions__container container grid">
+          <div class="questions__group">
+            <div class="questions__item">
+              <header class="questions__header">
+                <i class="ri-add-line questions__icon"></i>
+                <h3 class="questions__item-title"  data-lang="question1">
+                  What is a training plan without follow-up?
+                </h3>
+              </header>
+
+              <div class="questions__content">
+                <p class="questions__description"  data-lang="question2">
+                  After payment, you’ll receive a complete training plan that includes sets, reps, rest time, my personal notes for each workout, demonstration videos, and alternatives for exercises if needed—so it feels like I’m right there with you at the gym. You’ll also get guideline documents that tell you exactly what to do from the moment you walk into the gym until you leave. It’s a one-time plan that you can keep for life.
+                </p>
+              </div>
+            </div>
+
+            <div class="questions__item">
+              <header class="questions__header">
+                <i class="ri-add-line questions__icon"></i>
+                <h3 class="questions__item-title"  data-lang="question3">
+                  Who is this training plan suitable for?
+                </h3>
+              </header>
+
+              <div class="questions__content">
+                <p class="questions__description"  data-lang="question4">
+                  It’s perfect for any woman who wants to tone her body and reach her fitness goals. However, it’s not suitable for pregnant women or anyone with specific injuries—those should consult their doctor or subscribe to my full coaching packages that include doctor follow-up.
+                </p>
+              </div>
+            </div>
+
+            <div class="questions__item">
+              <header class="questions__header">
+                <i class="ri-add-line questions__icon"></i>
+                <h3 class="questions__item-title"  data-lang="question5">
+                  Can beginners follow these training plans?
+                </h3>
+              </header>
+
+              <div class="questions__content">
+                <p class="questions__description"  data-lang="question6">
+                  Absolutely! Every plan is designed with beginners in mind. I break down exercise performance from scratch and provide variations to suit different fitness levels. Whether you're new to training or have 10–15 years of experience, these plans will work for you.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="questions__group">
+            <div class="questions__item">
+              <header class="questions__header">
+                <i class="ri-add-line questions__icon"></i>
+                <h3 class="questions__item-title"  data-lang="question7">
+                  Can I follow the plan at home or only at the gym?
+                </h3>
+              </header>
+
+              <div class="questions__content">
+                <p class="questions__description"  data-lang="question8">
+                  You can absolutely follow it at home or at the gym! Each plan includes home-friendly alternatives, clear video demos, reps, weights, and rest times to make training accessible no matter your location.
+                </p>
+              </div>
+            </div>
+
+            <div class="questions__item">
+              <header class="questions__header">
+                <i class="ri-add-line questions__icon"></i>
+                <h3 class="questions__item-title"  data-lang="question9">
+                  How do I receive my training plan?
+                </h3>
+              </header>
+
+              <div class="questions__content">
+                <p class="questions__description"  data-lang="question10">
+                  Once payment is complete, you’ll be redirected to a page where your training plan is instantly available and ready to use.
+                </p>
+              </div>
+            </div>
+
+            <div class="questions__item">
+              <header class="questions__header">
+                <i class="ri-add-line questions__icon"></i>
+                <h3 class="questions__item-title"  data-lang="question11">
+                  Why should I, as a woman, buy this training plan?
+                </h3>
+              </header>
+
+              <div class="questions__content">
+                <p class="questions__description"  data-lang="question12">
+                  In short: I've coached over 1,500 women in the past 4 years and helped them achieve incredible results. I'm a specialist in female hormones, training, and nutrition. I hold multiple diplomas and certifications that focus on women’s health. My plans are designed to support hormonal balance, muscle tone, mental well-being, and build a strong, confident relationship with food and training.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!--==================== testimonial ====================-->
+      <section class="testimonial section" id="testimonial">
+        <h2 class="section__title" data-lang="testimonialtitle">
+            Customer Opinions
+        </h2>
+        <div class="testimonial__container container">
+            <div class="testimonial__swiper swiper">
+                <div class="swiper-wrapper">
+                    <article class="testimonial__card swiper-slide">
+                        <img src="{% static 'assets/img/tes1.webp' %}" alt="" class="testimonial__img">
+                        <h2 class="testimonial__title" data-lang="testimonial1">
+                            Nour
+                        </h2>
+                        <p class="testimonial__description" data-lang="testimonial2">
+                            Hey Omar, how are you? Honestly, everything is going great. The meal plan and workout routine are amazing. I can't believe I lost 10 kg of fat without feeling deprived of anything! My diet and physique have completely changed, and the difference is clearly
+                            visible in the pictures. It was truly an honor working with you during this period. You have great taste, you're very respectful, and you never hesitate to provide any information. Mashallah, you understand everything and
+                            are really skilled. My mindset about food and dieting has completely changed. Now, I eat well and properly while understanding exactly what goes into my body. I calculate everything, and I no longer stress about whether
+                            eating something will make me gain weight or ruin my diet. Before, I used to regain the weight I lost because I didn't understand things properly. Now, exercise has become an essential part of my daily routine, and I can't
+                            imagine my life without it. Honestly, everything about you is amazing. May God bless you! Thank you for everything and for all the effort you put in with me. I truly appreciate it                            </p>
+                        <div class="testimonial__stars">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                    </article>
+                    <article class="testimonial__card swiper-slide">
+                        <img src="{% static 'assets/img/tes2.webp' %}" alt="" class="testimonial__img">
+                        <h2 class="testimonial__title" data-lang="testimonial3">
+                            Noran Marwan
+                        </h2>
+                        <p class="testimonial__description" data-lang="testimonial4">
+                            Coach, if you only knew how much you've changed things I once thought were impossible! Whenever I heard people talk about a healthy lifestyle, I used to imagine it as something extremely difficult that required immense strength and determination—something
+                            I never thought I had. But you truly made it simple for me. Even on days when I struggled to stay committed, you always made it feel manageable and not like a big deal. Thank you so much! 🌹 At first, I just wanted to see
+                            how far I could go in reducing my body fat percentage. But honestly, I had completely lost hope in losing weight due to all the health issues I was dealing with. When I once visited a gynecologist, she advised me to see
+                            a surgeon and undergo a gastric sleeve surgery. And when I went to the surgeon, he actually turned me away! 🤣🤣 I even considered other procedures like the balloon or smart capsule, thinking they were my only options.
+                            But now, I'm so grateful! I've already lost 15 kg, and my goal is to reach 25 kg. Thanks to God, I'm in great health, feeling amazing, and still progressing. May God bless you for all your efforts—you never fail to support
+                            me! ❤️❤️❤️🌹🌹🌹</p>
+                        <div class="testimonial__stars">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                    </article>
+                    <article class="testimonial__card swiper-slide">
+                        <img src="{% static 'assets/img/tes3.webp' %}" alt="" class="testimonial__img">
+                        <h2 class="testimonial__title" data-lang="testimonial5">
+                            Mariam Ahmed
+                        </h2>
+                        <p class="testimonial__description" data-lang="testimonial6">
+                            Coach, I swear, in just a few weeks, my body has completely transformed—180 degrees! I can't even describe how happy I am with the results! My stomach and waist look completely different—it's unbelievable! My body has changed so much that I've reached
+                            a level I never thought possible. Today at the gym, everyone was commenting on my progress, asking me how I managed to achieve this transformation. When someone truly gets inside your head, motivates you, and guides you
+                            properly, you realize the process is actually much easier and faster than you ever imagined—especially when that person is as incredible as you. Thank you so much, truly! Every single word or piece of advice you gave me,
+                            I took to heart and applied exactly as you said. And honestly, that's what made all the difference for me—it was all about mindset and following what you taught me!                            </p>
+                        <div class="testimonial__stars">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                    </article>
+                    <article class="testimonial__card swiper-slide">
+                        <img src="{% static 'assets/img/tes5.webp' %}" alt="" class="testimonial__img">
+                        <h2 class="testimonial__title" data-lang="testimonial7">
+                            Talia Youssef
+                        </h2>
+                        <p class="testimonial__description" data-lang="testimonial8">
+                            The transformation has been incredible! My body shape has changed so much, even though I wasn't fully committed to training and diet. If I had been more disciplined, the results would have been even better! My skin has also improved significantly—something
+                            I didn't expect at all! At first, the workout schedule overwhelmed me 😂, but later, I actually started enjoying it. The training is well-structured and makes a huge difference. As for food, I was amazed that I could still
+                            eat what I love without a complicated diet plan. Understanding that I can enjoy my meals made the whole journey much easier and more comfortable for me. Honestly, everything has been great! The only issue was the time difference,
+                            which sometimes delayed responses, but that's totally fine. Most importantly, you're professional, respectful, and genuinely dedicated to helping people. You never hold back any valuable information, and that's exactly
+                            why I decided to sign up with you. ❤️🙏🏻🙏🏻                            </p>
+                        <div class="testimonial__stars">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                    </article>
+                    <article class="testimonial__card swiper-slide">
+                        <img src="{% static 'assets/img/tes8.webp' %}" alt="" class="testimonial__img">
+                        <h2 class="testimonial__title" data-lang="testimonial9">
+                            Jana Sami
+                        </h2>
+                        <p class="testimonial__description" data-lang="testimonial10">
+                            Honestly, this isn't just feedback for the sake of giving feedback—I truly mean every word. You are an outstanding and successful person, and I genuinely wish you more success. I have changed so much, and I now feel a level of confidence I never had before—all
+                            because of you and what I've learned from you. I never knew how to eat properly, but now I've learned how to eat well without depriving myself. I can't even explain exactly what you did, but I'm extremely happy with the
+                            results and continuing my journey because of you. Your professionalism is incredible—any time I asked you something, you always had the right answer. Despite my busy schedule and all the challenges, I still achieved amazing
+                            results, and I'm truly happy about it. I was so eager to share my progress photos, and I wish you all the success because you truly deserve it. ❤️                          </p>
+                        <div class="testimonial__stars">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <section class="popular section" id="popular" data-aos="fade-right">
+        <h2 data-lang="poph2" class="section__title" >Client Success Stories</h2>
+        <div class="popular__container container grid">
+          <article class="popular__card">
+            <div class="popular__image">
+              <video
+                poster="{% static 'assets/img/2.webp' %}"
+                class="popular__img"
+                id="myVideo"
+                controls
+              >
+                <source
+                  src="{% static 'assets/img/v1.MP4' %}"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+              <div class="popular__shadow"></div>
+            </div>
+          </article>
+          <article class="popular__card">
+            <div class="popular__image">
+              <video
+                poster="{% static 'assets/img/2.webp' %}"
+                class="popular__img"
+                id="myVideo"
+                controls
+              >
+                <source
+                  src="{% static 'assets/img/v2.MP4' %}"
+                  type="video/mp4"
+                />
+              </video>
+              <div class="popular__shadow"></div>
+            </div>
+          </article>
+          <article class="popular__card">
+            <div class="popular__image">
+              <video
+                poster="{% static 'assets/img/2.webp' %}"
+                class="popular__img vv"
+                id="myVideo"
+                controls
+              >
+                <source
+                  src="{% static 'assets/img/v3.mp4' %}"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+              <div class="popular__shadow"></div>
+            </div>
+          </article>
+         
+        </div>
+        
+        <div class="te">
+         
+          <a href="" class="button" >
+            <p data-lang="button" data-lang="poph2">See More</p> <i class="ri-instagram-line button__icon"></i>
+        </a>
+          
+        </div>
+        
+      </section>
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer" id="footer">
+      <div class="footer__container container grid">
+        <div>
+          <h3 class="footer__title"  data-lang="social">Social</h3>
+          <div class="footer__social">
+             
+              <a href="https://www.tiktok.com/@omarelmahdyy_?_t=ZS-8v847sHiWrA&_r=1" target="_blank" class="footer__social-link">
+                  <i class="ri-tiktok-fill"></i>
+              </a>
+            
+              <a href="https://www.instagram.com/omarelmahdyy_?igsh=MThkNHpia2R0Y2Nzcg%3D%3D&utm_source=qr" target="_blank" class="footer__social-link">
+                  <i class="ri-instagram-line"></i>
+              </a>
+
+              <a href="https://www.instagram.com/omarelmahdyy_transformations?igsh=MWR3czYwc3ZhZWh2cg==" target="_blank" class="footer__social-link">
+                  <i class="ri-instagram-fill"></i>
+              </a>
+
+              <a href="https://www.facebook.com/share/157LKGppDq/?mibextid=wwXIfr" target="_blank" class="footer__social-link">
+                  <i class="ri-facebook-circle-fill"></i>
+              </a>
+
+              <a href="http://wa.me/201123453575" target="_blank" class="footer__social-link">
+                  <i class="ri-whatsapp-fill"></i>
+              </a>
+
+              <a href="https://youtube.com/@omarelmahdyy?si=qz5f3L4A3ambjjrb" target="_blank" class="footer__social-link">
+                  <i class="ri-youtube-fill"></i>
+              </a>
+              
+          </div>
+      </div>
+        <div>
+          <h3 class="footer__title"  data-lang="payment">Payment Method</h3>
+          <div class="footer__pay">
+            <img
+              src="{% static 'assets/img/footer-card-1.webp' %}"
+              alt=""
+              class="footer__pay-card"
+            />
+            <img
+              src="{% static 'assets/img/footer-card-2.webp' %}"
+              alt=""
+              class="footer__pay-card"
+            />
+            <img
+              src="{% static 'assets/img/footer-card-3.webp' %}"
+              alt=""
+              class="footer__pay-card"
+            />
+            <img
+              src="{% static 'assets/img/footer-card-4.webp' %}"
+              alt=""
+              class="footer__pay-card"
+            />
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__title"  data-lang="Subscribe">Subscribe For Discounts</h3>
+          <form action="" class="footer__form">
+            <input type="email" placeholder="Email" class="footer__input" />
+            <button class="footer__button button" data-lang="sub">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <span class="footer__copy">
+        &#169; All Rights Reserved By <a href="#">Mo Alramly</a>
+      </span>
+    </footer>
+
+    <!--========== SCROLL UP ==========-->
+    <a href="#" class="scrollup" id="scroll-up">
+      <i class="ri-arrow-up-double-fill"></i>
+    </a>
+
+    <!--=============== SCRIPTS ===============-->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const openBtn = document.getElementById('openCurrencyMenu');
+          const closeBtn = document.getElementById('closeMenu');
+          const menu = document.getElementById('currencyMenu');
+          const menuItems = document.querySelectorAll('.menu-item');
+          const currentCurrencyEl = document.getElementById('currentCurrency');
+          const currentFlag = document.getElementById('currentFlag');
+          const priceEls = document.querySelectorAll('.menu__preci');
+          
+          const basePrices = {
+              package1: 55, // USD
+              package2: 97,
+              package3: 39
+          };
+          
+          const exchangeRates = {
+              USD: 1,
+              EGP: 30.9,
+              SAR: 3.75,
+              AED: 3.67
+          };
+      
+          const countryCurrencyMapping = {
+              'EGP': 'مصر',
+              'SAR': 'السعودية',
+              'AED': 'الإمارات',
+              'USD': 'أمريكا'
+          };
+      
+          let selectedCurrency = 'USD'; // default
+      
+          // Get user's IP info (using ipinfo.io)
+          const ipInfoUrl = 'https://ipinfo.io/json?token=5f01ba4857444e';
+          fetch(ipInfoUrl)
+              .then(response => response.json())
+              .then(data => {
+                  const userCountry = data.country;
+                  const currency = getCurrencyForCountry(userCountry);
+                  setCurrency(currency);
+              });
+      
+          // Map country to currency
+          function getCurrencyForCountry(country) {
+              if (country === 'EG') return 'EGP';
+              if (country === 'SA') return 'SAR';
+              if (country === 'AE') return 'AED';
+              return 'USD'; // Default to USD
+          }
+      
+          function setCurrency(currency) {
+              selectedCurrency = currency;
+              currentCurrencyEl.textContent = currency;
+              currentFlag.innerHTML = `<img src="{% static 'assets/img/${currency.toLowerCase()}.png' %}" width="20">`;
+      
+              priceEls.forEach((el, index) => {
+                  const packageName = `package${index + 1}`;
+                  const usdPrice = basePrices[packageName];
+                  const converted = (usdPrice * exchangeRates[currency]).toFixed(2);
+                  el.textContent = currency === 'USD' ? `$${usdPrice}` : `${converted} ${currency}`;
+              });
+          }
+      
+          openBtn.addEventListener('click', () => {
+              menu.classList.add('show');
+          });
+      
+          closeBtn.addEventListener('click', () => {
+              menu.classList.remove('show');
+          });
+      
+          menuItems.forEach(item => {
+              item.addEventListener('click', () => {
+                  const currency = item.getAttribute('data-currency');
+                  setCurrency(currency);
+                  menu.classList.remove('show');
+              });
+          });
+      
+          // Initial prices update
+          priceEls.forEach((el, index) => {
+              const packageName = `package${index + 1}`;
+              const usdPrice = basePrices[packageName];
+              el.textContent = `$${usdPrice}`;
+          });
+      });
+  </script>
+    <!--=============== SWIPER JS ===============-->
+    <script src="{% static 'assets/js/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/lang.js' %}"></script>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset: 200,
+        duration: 1500,
+      });
+    </script>
+  </body>
+</html>
