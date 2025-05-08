@@ -48,6 +48,7 @@ def email10(request):
 def email11(request):
     return render(request, 'accounts/email11.html')
   
+# Webhook endpoint to handle payment callback (Fawaterak)
 @csrf_exempt
 def fawaterak_webhook(request):
     if request.method == 'POST':
@@ -56,7 +57,6 @@ def fawaterak_webhook(request):
         return JsonResponse({'status': 'received'})
     return JsonResponse({'status': 'not allowed'}, status=405)
 
-# دالة للحصول على IP المستخدم الحقيقي
 # دالة للحصول على IP المستخدم الحقيقي
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -75,7 +75,7 @@ def location_view(request):
         response = requests.get(url)
         if response.status_code == 200:
             data = response.json()
-            country = data.get("country", "US")
+            country = data.get("country", "US")  # Default to US if country is missing
             
             # تحديد العملة واللغة بناءً على الدولة
             if country == "EG":
@@ -86,5 +86,10 @@ def location_view(request):
                 return JsonResponse({"currency": "AED", "language": "ar"})
             else:
                 return JsonResponse({"currency": "USD", "language": "en"})
-    except Exception as e:
+        else:
+            print(f"Error: Unable to fetch location data. Status code: {response.status_code}")
+            return JsonResponse({"error": "خطأ في الحصول على البيانات من الخدمة الخارجية"}, status=500)
+    
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching location: {e}")
         return JsonResponse({"error": "لم نتمكن من الحصول على المعلومات"}, status=400)
