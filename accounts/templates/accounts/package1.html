@@ -23,35 +23,24 @@
     <!--==================== HEADER ====================-->
     <header class="header" id="header">
         <nav class="nav container">
-            <a href="{% url 'index' %}" class="nav__logo"><img style="width: 60%;" src="{% static 'assets/img/logo-2.svg' %}" alt="" class="logohat"></a>
+            <a href="{% url 'index' %}" class="nav__logo">
+                <img style="width: 60%;" src="{% static 'assets/img/logo-2.svg' %}" alt="" class="logohat">
+            </a>
+    
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
-                    <li>
-                        <a href="#home" class="nav__link" data-lang="navhome">HOME</a>
-                    </li>
-
-                    <li>
-                        <a href="{% url 'about' %}" class="nav__link" data-lang="navabout">ABOUT</a>
-                    </li>
-
-                    <li>
-                        <a href="{% url 'index' %}" class="nav__link"  data-lang="navtrans">TRANSFORMATION</a>
-                    </li>
-
-                    <li>
-                        <a href="#testimonial" class="nav__link"  data-lang="navtestimonial">
-                            TESTIMONIAL
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="{% url 'calc' %}" class="nav__link"  data-lang="navcalc">CALCULATOR</a>
-                    </li>
+                    <li><a href="#home" class="nav__link" data-lang="navhome">HOME</a></li>
+                    <li><a href="{% url 'about' %}" class="nav__link" data-lang="navabout">ABOUT</a></li>
+                    <li><a href="{% url 'index' %}" class="nav__link" data-lang="navtrans">TRANSFORMATION</a></li>
+                    <li><a href="#testimonial" class="nav__link" data-lang="navtestimonial">TESTIMONIAL</a></li>
+                    <li><a href="{% url 'calc' %}" class="nav__link" data-lang="navcalc">CALCULATOR</a></li>
                 </ul>
                 <div class="nav__colse" id="nav-close">
                     <i class="ri-close-large-line"></i>
                 </div>
             </div>
+    
+            <!-- ✅ زر العملة واللغة معًا -->
             <button type="button" id="openCurrencyMenu" class="btn--rounded-gray">
                 <span class="flag-icon" id="currentFlag">
                     <img src="{% static 'assets/img/usd.webp' %}" width="20" />
@@ -59,37 +48,52 @@
                 <span class="mx-1.5">|</span>
                 <span id="currentCurrency">USD</span>
             </button>
-            
+    
+            <!-- ✅ القائمة المنسدلة الجديدة -->
             <div class="language-currency-menu popup" id="currencyMenu">
                 <div class="menu-header">
-                    <span style="color: #ff9500;">اختر اللغة والعملة</span>
+                    <span style="color: #ff9500;">اختر العملة واللغة</span>
                     <span class="close-btn" id="closeMenu">&times;</span>
                 </div>
-            
+    
                 <div class="menu-options">
-                    <div class="menu-item" data-lang="ar" data-currency="EGP" data-flag="eg.png">
-                        <img src="{% static 'assets/img/eg.png' %}" alt="العلم المصري" class="flag-icon">
-                        <span>العربية - الجنيه المصري (EGP)</span>
+                    <!-- العملات -->
+                    <div class="menu-item currency-option" data-currency="EGP" data-flag="eg.png">
+                        <img src="{% static 'assets/img/eg.png' %}" alt="EG" class="flag-icon">
+                        <span>الجنيه المصري (EGP)</span>
                     </div>
-                    <div class="menu-item" data-lang="ar" data-currency="SAR" data-flag="saudi.webp">
-                        <img src="{% static 'assets/img/saudi.webp' %}" alt="العلم السعودي" class="flag-icon">
-                        <span>العربية - الريال السعودي (SAR)</span>
+                    <div class="menu-item currency-option" data-currency="SAR" data-flag="saudi.webp">
+                        <img src="{% static 'assets/img/saudi.webp' %}" alt="SA" class="flag-icon">
+                        <span>الريال السعودي (SAR)</span>
                     </div>
-                    <div class="menu-item" data-lang="ar" data-currency="AED" data-flag="unitearab.webp">
-                        <img src="{% static 'assets/img/unitearab.webp' %}" alt="العلم الإماراتي" class="flag-icon">
-                        <span>العربية - الدرهم الإماراتي (AED)</span>
+                    <div class="menu-item currency-option" data-currency="AED" data-flag="unitearab.webp">
+                        <img src="{% static 'assets/img/unitearab.webp' %}" alt="AE" class="flag-icon">
+                        <span>الدرهم الإماراتي (AED)</span>
                     </div>
-                    <div class="menu-item" data-lang="en" data-currency="USD" data-flag="usd.webp">
-                        <img src="{% static 'assets/img/usd.webp' %}" alt="العلم الأمريكي" class="flag-icon">
-                        <span>English - US Dollar (USD)</span>
+                    <div class="menu-item currency-option" data-currency="USD" data-flag="usd.webp">
+                        <img src="{% static 'assets/img/usd.webp' %}" alt="US" class="flag-icon">
+                        <span>US Dollar (USD)</span>
+                    </div>
+    
+                    <!-- اللغة -->
+                    <hr style="margin: 0.5rem 0; border: 1px solid #333;">
+                    <div class="menu-item lang-option" data-lang="en">
+                        <img src="{% static 'assets/img/usd.webp' %}" alt="EN" class="flag-icon">
+                        <span>English</span>
+                    </div>
+                    <div class="menu-item lang-option" data-lang="ar">
+                        <img src="{% static 'assets/img/eg.png' %}" alt="AR" class="flag-icon">
+                        <span>العربية</span>
                     </div>
                 </div>
             </div>
+    
             <div class="nav__toggle" id="nav-toggle">
                 <i class="ri-apps-2-fill"></i>
             </div>
         </nav>
     </header>
+    
 
     <!--==================== MAIN ====================-->
     <main class="main" >
@@ -353,7 +357,6 @@
             const openBtn = document.getElementById('openCurrencyMenu');
             const closeBtn = document.getElementById('closeMenu');
             const menu = document.getElementById('currencyMenu');
-            const menuItems = document.querySelectorAll('.menu-item');
             const currentCurrencyEl = document.getElementById('currentCurrency');
             const currentFlag = document.getElementById('currentFlag');
             const priceEls = document.querySelectorAll('.menu__preci');
@@ -376,59 +379,36 @@
                 EGP: {
                     package1: "https://app.fawaterk.com/paymentRequest/show/18645",
                     package2: "https://app.fawaterk.com/paymentRequest/show/18646",
-                    
                 },
                 SAR: {
                     package1: "https://app.fawaterk.com/paymentRequest/show/18651",
                     package2: "https://app.fawaterk.com/paymentRequest/show/18652",
-                    
                 },
                 AED: {
                     package1: "https://staging.fawaterk.com/paymentRequest/show/308",
                     package2: "https://staging.fawaterk.com/paymentRequest/show/307",
-                    
                 },
                 USD: {
                     package1: "https://app.fawaterk.com/paymentRequest/show/18648",
                     package2: "https://app.fawaterk.com/paymentRequest/show/18649",
-                    
                 }
             };
     
-            let selectedCurrency = 'USD';
+            const flagMap = {
+                EGP: 'eg.png',
+                SAR: 'saudi.webp',
+                AED: 'unitearab.webp',
+                USD: 'usd.webp'
+            };
     
-            function setCurrencyBasedOnLocation() {
-                fetch('/location/')
-                    .then(response => response.json())
-                    .then(data => {
-                        const country = data.country;
-                        let currency = 'USD';
-                        let lang = 'en';
+            let selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+            let selectedLanguage = localStorage.getItem('selectedLanguage') || 'en';
     
-                        if (country === 'EG') {
-                            currency = 'EGP';
-                            lang = 'ar';
-                        } else if (country === 'SA') {
-                            currency = 'SAR';
-                            lang = 'ar';
-                        } else if (country === 'AE') {
-                            currency = 'AED';
-                            lang = 'ar';
-                        }
-    
-                        selectedCurrency = currency;
-                        updateCurrencyUI(currency);
-                        changeLanguage(lang); // ✅ استدعاء الصحيح
-                    });
-            }
-    
+            // ✅ تغيير العملة فقط
             function updateCurrencyUI(currency) {
-                const flagMap = {
-                    EGP: 'eg.png',
-                    SAR: 'saudi.webp',
-                    AED: 'unitearab.webp',
-                    USD: 'usd.webp'
-                };
+                console.log("Updating currency to:", currency);  // التأكد من أن العملة تتغير بشكل صحيح
+                selectedCurrency = currency;
+                localStorage.setItem('selectedCurrency', currency);
     
                 currentCurrencyEl.textContent = currency;
                 currentFlag.innerHTML = `<img src="/static/assets/img/${flagMap[currency]}" width="20">`;
@@ -449,57 +429,92 @@
                 buttons[0]?.click();
             }
     
-            openBtn.addEventListener('click', () => {
+            // ✅ تغيير اللغة فقط
+            function updateLanguageUI(language) {
+                selectedLanguage = language;
+                localStorage.setItem('selectedLanguage', language);
+                changeLanguage(language);
+            }
+    
+            // ✅ تعيين العملة تلقائيًا من الموقع
+            function setCurrencyBasedOnLocation() {
+                fetch('/location/')
+                    .then(response => {
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log("Location data:", data);  // التحقق من البيانات
+                        const country = data.country || '';
+                        if (!localStorage.getItem('selectedCurrency')) {
+                            if (country === 'EG') {
+                                selectedCurrency = 'EGP';  // إذا كانت الدولة مصر
+                            } else if (country === 'SA') {
+                                selectedCurrency = 'SAR';
+                            } else if (country === 'AE') {
+                                selectedCurrency = 'AED';
+                            } else {
+                                selectedCurrency = 'USD';  // العملة الافتراضية
+                            }
+                            console.log("Selected Currency based on location:", selectedCurrency); // التحقق من العملة المحددة بناءً على الدولة
+                            updateCurrencyUI(selectedCurrency);
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error fetching location data:", error);
+                        // إذا حدث خطأ، حدد العملة الافتراضية
+                        if (!localStorage.getItem('selectedCurrency')) {
+                            selectedCurrency = 'USD';
+                            updateCurrencyUI(selectedCurrency);
+                        }
+                    });
+            }
+    
+            // ✅ فتح وإغلاق القائمة
+            openBtn?.addEventListener('click', () => {
                 menu.classList.add('show');
             });
     
-            closeBtn.addEventListener('click', () => {
+            closeBtn?.addEventListener('click', () => {
                 menu.classList.remove('show');
             });
     
-            menuItems.forEach(item => {
+            // ✅ التعامل مع زر العملة
+            document.querySelectorAll('.currency-option').forEach(item => {
                 item.addEventListener('click', () => {
                     const currency = item.getAttribute('data-currency');
                     const flag = item.getAttribute('data-flag');
-                    const language = item.getAttribute('data-lang');
-    
-                    selectedCurrency = currency;
-    
-                    currentCurrencyEl.textContent = currency;
+                    updateCurrencyUI(currency);
                     currentFlag.innerHTML = `<img src="/static/assets/img/${flag}" width="20">`;
-    
-                    priceEls.forEach((el, index) => {
-                        const packageName = `package${index + 1}`;
-                        const usdPrice = basePrices[packageName];
-                        const converted = (usdPrice * exchangeRates[currency]).toFixed(2);
-                        el.textContent = currency === 'USD' ? `$${usdPrice}` : `${converted} ${currency}`;
-                    });
-    
-                    const buttons = document.querySelectorAll('.btn-day');
-                    buttons.forEach((button, index) => {
-                        const packageName = `package${index + 1}`;
-                        button.setAttribute('data-link', paymentLinks[currency][packageName]);
-                    });
-    
-                    buttons[0]?.click();
                     menu.classList.remove('show');
-    
-                    changeLanguage(language); // ✅ الاستدعاء الصحيح للغة
                 });
             });
     
-            // استرجاع اللغة المختارة مسبقًا إذا وُجدت
-            const savedLang = localStorage.getItem('selectedLanguage') || 'en';
-            changeLanguage(savedLang);
+            // ✅ التعامل مع زر اللغة
+            document.querySelectorAll('.lang-option').forEach(item => {
+                item.addEventListener('click', () => {
+                    const lang = item.getAttribute('data-lang');
+                    updateLanguageUI(lang);
+                    menu.classList.remove('show');
+                });
+            });
     
-            setCurrencyBasedOnLocation();
+            // ✅ استرجاع البيانات المخزنة
+            updateCurrencyUI(selectedCurrency);
+            updateLanguageUI(selectedLanguage);
     
+            // ✅ لو أول مرة فقط، حدد العملة بناء على الدولة
+            if (!localStorage.getItem('selectedCurrency')) {
+                setCurrencyBasedOnLocation();
+            }
+    
+            // ✅ أسعار افتراضية
             priceEls.forEach((el, index) => {
                 const packageName = `package${index + 1}`;
                 const usdPrice = basePrices[packageName];
                 el.textContent = `$${usdPrice}`;
             });
     
+            // ✅ تفعيل باقة معينة وعرض السعر
             const buttons = document.querySelectorAll('.btn-day');
             buttons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -515,6 +530,7 @@
                 });
             });
     
+            // ✅ تحديث عدد أيام التمرين
             const workoutButtons = document.querySelectorAll('.workout-button');
             workoutButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -524,6 +540,9 @@
             });
         });
     </script>
+    
+    
+    
     <script>
         function changePackage(option) {
             const image = document.getElementById('package-image');
