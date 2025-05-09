@@ -75,21 +75,8 @@ def location_view(request):
         response = requests.get(url)
         if response.status_code == 200:
             data = response.json()
-            country = data.get("country", "US")  # Default to US if country is missing
-            
-            # تحديد العملة واللغة بناءً على الدولة
-            if country == "EG":
-                return JsonResponse({"currency": "EGP", "language": "ar"})
-            elif country == "SA":
-                return JsonResponse({"currency": "SAR", "language": "ar"})
-            elif country == "AE":
-                return JsonResponse({"currency": "AED", "language": "ar"})
-            else:
-                return JsonResponse({"currency": "USD", "language": "en"})
-        else:
-            print(f"Error: Unable to fetch location data. Status code: {response.status_code}")
-            return JsonResponse({"error": "خطأ في الحصول على البيانات من الخدمة الخارجية"}, status=500)
-    
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching location: {e}")
-        return JsonResponse({"error": "لم نتمكن من الحصول على المعلومات"}, status=400)
+            return JsonResponse(data)
+    except:
+        pass
+
+    return JsonResponse({"error": "لم نتمكن من الحصول على المعلومات"}, status=400)
